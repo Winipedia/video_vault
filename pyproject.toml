@@ -1,0 +1,56 @@
+[project]
+name = "video-vault"
+version = "0.1.0"
+description = "An application to download any video"
+authors = [
+    {name = "Winipedia", email = "win.steveker@gmx.de"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dynamic = ["dependencies"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false  # bc this is private use
+
+[tool.poetry.dependencies]
+winipedia-utils = "^0.1.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.11.12"
+pre-commit = "^4.2.0"
+mypy = "^1.16.0"
+pytest = "^8.4.0"
+bandit = "^1.8.3"
+types-setuptools = "^80.9.0.20250529"
+types-tqdm = "^4.67.0.20250516"
+types-defusedxml = "^0.7.0.20250516"
+types-pyyaml = "^6.0.12.20250516"
+pytest-mock = "^3.14.1"
+django-stubs = "^5.2.0"
+
+
+[tool.ruff]
+exclude = [".*"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D203", "D213", "COM812", "ANN401"]
+fixable = ["ALL"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+strict = true
+warn_unreachable = true
+show_error_codes = true
+files = "."
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.bandit]
