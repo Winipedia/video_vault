@@ -7,12 +7,14 @@ import sys
 
 from PySide6.QtWidgets import QApplication
 
+from video_vault.db.setup import setup_django
 from video_vault.ui.stylesheet import STYLESHEET
 from video_vault.ui.windows.main import VideoVault as VideoVaultWindow
 
 
 def main() -> None:
     """Main function to run the application."""
+    setup_django()
     # Create QApplication - this manages the entire app
     app = QApplication(sys.argv)
 
