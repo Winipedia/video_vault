@@ -19,6 +19,8 @@ from video_vault.core.security import get_app_key_as_str
 
 def setup_django() -> None:
     """Setup the database."""
+    if settings.configured:
+        return
     root_dir = Path(user_data_dir(APP_NAME, AUTHOR, ensure_exists=True))
     media_root = root_dir / "media"
     media_root.mkdir(parents=True, exist_ok=True)
