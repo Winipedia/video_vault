@@ -4,6 +4,8 @@ This module contains the database settings.
 In the init we setup django settings and create the db if not existent.
 """
 
+import sys
+from io import StringIO
 from pathlib import Path
 
 import django
@@ -46,4 +48,10 @@ def setup_django() -> None:
 
     # create db if not existent
     if not db_path.exists():
-        call_command("migrate")
+        # Ensure stdout/stderr exist for Django management commands
+        if sys.stdout is None:
+            sys.stdout = StringIO()
+        if sys.stderr is None:
+            sys.stderr = StringIO()
+
+        call_command("migrate", verbosity=0)  # Reduce verbosity to minimize output
