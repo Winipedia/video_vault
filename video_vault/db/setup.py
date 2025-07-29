@@ -53,4 +53,4 @@ def setup_django() -> None:
     if sys.stderr is None:
         sys.stderr = StringIO()
 
-    call_command("migrate")  # Reduce verbosity to minimize output
+    call_command("migrate")
