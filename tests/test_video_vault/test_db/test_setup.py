@@ -91,4 +91,4 @@ def test_setup_django(mocker: MockerFixture) -> None:
         mock_django_setup.assert_called_once()
 
         # Verify migration was called (since db doesn't exist)
-        mock_call_command.assert_called_once_with("migrate", verbosity=0)
+        mock_call_command.assert_called_once_with("migrate")

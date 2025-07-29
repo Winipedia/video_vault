@@ -46,12 +46,9 @@ def setup_django() -> None:
 
     django.setup()
 
-    # create db if not existent
-    if not db_path.exists():
-        # Ensure stdout/stderr exist for Django management commands
-        if sys.stdout is None:
-            sys.stdout = StringIO()
-        if sys.stderr is None:
-            sys.stderr = StringIO()
+    if sys.stdout is None:
+        sys.stdout = StringIO()
+    if sys.stderr is None:
+        sys.stderr = StringIO()
 
-        call_command("migrate", verbosity=0)  # Reduce verbosity to minimize output
+    call_command("migrate")  # Reduce verbosity to minimize output
