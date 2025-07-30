@@ -13,21 +13,48 @@ if TYPE_CHECKING:
     from http.cookiejar import Cookie
 
 
-def test_add_download() -> None:
+def test_add_download(mocker: MockerFixture, tmp_path: Path) -> None:
     """Test func for add_download."""
     test_url = "https://www.youtube.com/watch?v=805SIqgDZIE"
     cookies: list[Cookie] = []
+
+    # Create a fake video file for testing
+    fake_video_file = tmp_path / "test_video.mp4"
+    fake_video_file.write_bytes(b"fake video content for testing")
+
+    # Mock the YoutubeDL instance methods
+    mock_ydl_instance = mocker.Mock()
+    mock_ydl_instance.extract_info.return_value = {"title": "Test Video"}
+    mock_ydl_instance.prepare_filename.return_value = str(fake_video_file)
+
+    # Mock the YoutubeDL constructor to return our mock instance
+    mock_ydl_class = mocker.patch("video_vault.core.downloads.yt_dlp.YoutubeDL")
+    mock_ydl_class.return_value.__enter__.return_value = mock_ydl_instance
 
     result = add_download(test_url, cookies)
 
     assert_with_msg(result.file.name != "", "File should have a name")
     assert_with_msg(result.display_name != "", "File should have a display name")
+    mock_ydl_instance.extract_info.assert_called_once_with(test_url, download=True)
 
 
-def test_do_download() -> None:
+def test_do_download(mocker: MockerFixture, tmp_path: Path) -> None:
     """Test func for do_download."""
     test_url = "https://www.youtube.com/watch?v=805SIqgDZIE"
     cookies: list[Cookie] = []
+
+    # Create a fake video file for testing
+    fake_video_file = tmp_path / "test_video.mp4"
+    fake_video_file.write_bytes(b"fake video content for testing")
+
+    # Mock the YoutubeDL instance methods
+    mock_ydl_instance = mocker.Mock()
+    mock_ydl_instance.extract_info.return_value = {"title": "Test Video"}
+    mock_ydl_instance.prepare_filename.return_value = str(fake_video_file)
+
+    # Mock the YoutubeDL constructor to return our mock instance
+    mock_ydl_class = mocker.patch("video_vault.core.downloads.yt_dlp.YoutubeDL")
+    mock_ydl_class.return_value.__enter__.return_value = mock_ydl_instance
 
     with tempfile.TemporaryDirectory() as tempdir:
         result = do_download(tempdir, test_url, cookies)
@@ -36,6 +63,8 @@ def test_do_download() -> None:
         assert_with_msg(
             result.stat().st_size > 0, "Downloaded file should not be empty"
         )
+        mock_ydl_instance.extract_info.assert_called_once_with(test_url, download=True)
+        mock_ydl_instance.prepare_filename.assert_called_once()
 
 
 def test_save_download(tmp_path: Path) -> None:
