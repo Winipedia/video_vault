@@ -24,7 +24,6 @@ def main() -> None:
     # Create and show the main window
     window = VideoVaultWindow()
     window.showMaximized()
-
     # Start the event loop (keeps the app running)
     # This will block until the user closes the window
     app.exec()

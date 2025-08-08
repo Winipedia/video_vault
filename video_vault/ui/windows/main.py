@@ -25,6 +25,9 @@ class VideoVault(BaseWindow):
 
     def pre_setup(self) -> None:
         """Setup the UI."""
+        # set the play icon from winipedia_utils
+        play_icon = self.get_svg_icon("play_icon")
+        self.setWindowIcon(play_icon)
 
     def setup(self) -> None:
         """Setup the UI."""

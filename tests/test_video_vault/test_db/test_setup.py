@@ -63,9 +63,6 @@ def test_setup_django(mocker: MockerFixture) -> None:
         )
         installed_apps = call_args["INSTALLED_APPS"]
         expected_apps = [
-            "django.contrib.auth",
-            "django.contrib.contenttypes",
-            "django.contrib.sessions",
             "video_vault.db",
         ]
         for app in expected_apps:

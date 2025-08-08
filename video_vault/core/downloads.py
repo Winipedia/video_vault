@@ -15,7 +15,7 @@ from winipedia_utils.pyside.ui.widgets.notification import Notification
 from yt_dlp.utils import DownloadError
 
 from video_vault.db.models import File
-from video_vault.externals.ffmpegs.ffmpeg import get_ffmpeg_path
+from video_vault.externals.ffmpeg import get_ffmpeg_path
 
 logger = get_logger(__name__)
 
