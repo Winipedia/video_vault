@@ -47,13 +47,23 @@ class TestVideoVault:
             result == DownloadsPage, "Should return DownloadsPage as start page class"
         )
 
-    def test_pre_setup(self) -> None:
+    def test_pre_setup(self, mocker: MockerFixture) -> None:
         """Test method for pre_setup."""
         # Create a mock instance and call pre_setup
         window = VideoVault.__new__(VideoVault)  # Create without calling __init__
+
+        # Mock the methods that pre_setup calls
+        mock_get_svg_icon = mocker.patch.object(window, "get_svg_icon")
+        mock_set_window_icon = mocker.patch.object(window, "setWindowIcon")
+        mock_play_icon = mocker.Mock()
+        mock_get_svg_icon.return_value = mock_play_icon
+
+        # Call pre_setup
         window.pre_setup()
 
-        # Since pre_setup is empty, just verify it completed without error
+        # Verify the methods were called correctly
+        mock_get_svg_icon.assert_called_once_with("play_icon")
+        mock_set_window_icon.assert_called_once_with(mock_play_icon)
 
     def test_setup(self) -> None:
         """Test method for setup."""

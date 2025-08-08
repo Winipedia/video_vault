@@ -36,9 +36,6 @@ def setup_django() -> None:
             }
         },
         INSTALLED_APPS=[
-            "django.contrib.auth",
-            "django.contrib.contenttypes",
-            "django.contrib.sessions",
             "video_vault.db",
         ],
         MEDIA_ROOT=media_root,
