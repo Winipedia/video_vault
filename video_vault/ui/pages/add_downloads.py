@@ -3,8 +3,6 @@
 This module contains the add downloads page class for the VideoVault application.
 """
 
-from typing import final
-
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QPushButton,
@@ -18,17 +16,14 @@ from video_vault.core.downloads import DownloadWorker
 class AddDownloads(BrowserPage):
     """Add downloads page for the VideoVault application."""
 
-    @final
     def pre_setup(self) -> None:
         """Setup the UI."""
         # add a download button in the top right
         self.add_download_button()
 
-    @final
     def post_setup(self) -> None:
         """Setup the UI."""
 
-    @final
     def add_download_button(self) -> None:
         """Add a download button."""
         download_arrow_icon = self.get_svg_icon("download_arrow")
@@ -45,7 +40,6 @@ class AddDownloads(BrowserPage):
             button, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop
         )
 
-    @final
     def on_add_download(self) -> None:
         """Add a download."""
         url = self.browser.url()

@@ -5,7 +5,6 @@ This module contains the downloads page class for the VideoVault application.
 
 from functools import partial
 from pathlib import Path
-from typing import final
 
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
@@ -24,22 +23,18 @@ from video_vault.db.models import File
 class Downloads(BasePage):
     """Downloads page for the VideoVault application."""
 
-    @final
     def pre_setup(self) -> None:
         """Setup the UI."""
 
-    @final
     def setup(self) -> None:
         """Setup the UI."""
         # add button in the top right to add a download
         self.add_add_downloads_button()
         self.add_download_buttons_scroll_area()
 
-    @final
     def post_setup(self) -> None:
         """Setup the UI."""
 
-    @final
     def add_add_downloads_button(self) -> None:
         """Add a button to add a download."""
         from video_vault.ui.pages.add_downloads import AddDownloads as AddDownloadsPage
@@ -57,7 +52,6 @@ class Downloads(BasePage):
             button, Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop
         )
 
-    @final
     def add_download_buttons_scroll_area(self) -> None:
         """Add a list of downloads to scroll through and on click the video plays."""
         self.downloads = File.objects.all().order_by("-created_at")
@@ -80,7 +74,6 @@ class Downloads(BasePage):
         # Add the scroll area to the main layout
         self.v_layout.addWidget(scroll_area)
 
-    @final
     def play_download(self, download: File) -> None:
         """Play the video."""
         from video_vault.ui.pages.player import Player as PlayerPage
@@ -97,7 +90,6 @@ class Downloads(BasePage):
 
         player_page.start_playback(Path(download.file.path), download.last_position)
 
-    @final
     def add_download_button(self, download: File) -> None:
         """Add a download to the list."""
         # check if display name
@@ -119,10 +111,16 @@ class Downloads(BasePage):
 
         button.setMenu(menu)
 
-    @final
     def remove_download_and_button(self, download_button: QPushButton) -> None:
         """Remove a download from the list."""
+        # stop the player if the current file is the one being deleted
+        from video_vault.ui.pages.player import Player as PlayerPage
+
         file = self.button_to_download[download_button]
+        player_page = self.get_page(PlayerPage)
+        if player_page.current_file == file:
+            player_page.stop_playback()
+
         file.delete_file()
         self.downloads_layout.removeWidget(download_button)
         download_button.deleteLater()
