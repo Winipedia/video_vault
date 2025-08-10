@@ -203,6 +203,12 @@ class TestDownloads:
 
     def test_remove_download_and_button(self, mocker: MockerFixture) -> None:
         """Test method for remove_download_and_button."""
+        # Mock the Player page and its methods
+        mock_player_page = mocker.Mock()
+        mock_player_page.current_file = None
+        mock_get_page = mocker.patch.object(Downloads, "get_page")
+        mock_get_page.return_value = mock_player_page
+
         # Mock the download file and its delete method
         mock_file = mocker.Mock()
         mock_downloads_layout = mocker.Mock()
@@ -215,6 +221,9 @@ class TestDownloads:
 
         # Call remove_download_and_button
         page.remove_download_and_button(mock_button)
+
+        # Verify get_page was called to get player page
+        mock_get_page.assert_called_once()
 
         # Verify file was deleted
         mock_file.delete_file.assert_called_once()

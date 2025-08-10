@@ -154,3 +154,37 @@ class TestPlayer:
 
         # Verify play_encrypted_file was called with default position 0
         mock_play_encrypted_file.assert_called_once_with(test_path, mock_aes_gcm, 0)
+
+    def test_stop_playback(self, mocker: MockerFixture) -> None:
+        """Test method for stop_playback."""
+        # Create a mock instance
+        player = Player.__new__(Player)
+
+        # Mock the media player
+        mock_media_player = mocker.Mock()
+        expected_position = 3000
+        mock_media_player.position.return_value = expected_position
+        player.media_player = mock_media_player
+
+        # Mock current file
+        mock_current_file = mocker.Mock()
+        mock_current_file.last_position = 0
+        player.current_file = mock_current_file
+
+        # Call stop_playback
+        player.stop_playback()
+
+        # Verify position was saved
+        assert_with_msg(
+            mock_current_file.last_position == expected_position,
+            "Current file position should be saved",
+        )
+        mock_current_file.save.assert_called_once()
+
+        # Verify current_file was set to None
+        assert_with_msg(
+            player.current_file is None, "current_file should be set to None"
+        )
+
+        # Verify media player was stopped
+        mock_media_player.stop_and_close_io_device.assert_called_once()
