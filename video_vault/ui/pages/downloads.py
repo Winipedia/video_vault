@@ -18,6 +18,8 @@ from PySide6.QtWidgets import (
 from winipedia_utils.pyside.ui.pages.base.base import Base as BasePage
 
 from video_vault.db.models import File
+from video_vault.ui.pages.add_downloads import AddDownloads as AddDownloadsPage
+from video_vault.ui.pages.player import Player as PlayerPage
 
 
 class Downloads(BasePage):
@@ -37,8 +39,6 @@ class Downloads(BasePage):
 
     def add_add_downloads_button(self) -> None:
         """Add a button to add a download."""
-        from video_vault.ui.pages.add_downloads import AddDownloads as AddDownloadsPage
-
         # now make the button top right in the layout, QV doesn't support this
         # so add a horizontal layout to the top row
         button = self.add_to_page_button(
@@ -76,8 +76,6 @@ class Downloads(BasePage):
 
     def play_download(self, download: File) -> None:
         """Play the video."""
-        from video_vault.ui.pages.player import Player as PlayerPage
-
         download.refresh_from_db()
 
         player_page = self.get_page(PlayerPage)
@@ -97,7 +95,7 @@ class Downloads(BasePage):
         self.button_to_download[button] = download
         self.downloads_layout.addWidget(button)
         # give the button a QMenu with play and delete
-        menu = QMenu(self)
+        menu = QMenu(button)
 
         play_action = menu.addAction("Play")
         play_action.setIcon(self.get_svg_icon("play_icon"))
@@ -114,7 +112,6 @@ class Downloads(BasePage):
     def remove_download_and_button(self, download_button: QPushButton) -> None:
         """Remove a download from the list."""
         # stop the player if the current file is the one being deleted
-        from video_vault.ui.pages.player import Player as PlayerPage
 
         file = self.button_to_download[download_button]
         player_page = self.get_page(PlayerPage)
