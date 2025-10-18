@@ -12,7 +12,7 @@ def do_build() -> None:
     """Build the app."""
     # Create temporary directory for build files
     with tempfile.TemporaryDirectory() as temp_build_dir:
-        spec_file = Path(build_project.__file__).parent / "VideoVault.spec"
+        spec_file = Path(build_project.__file__).parent / "build.spec"
 
         options = [
             # Path to spec file

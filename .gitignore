@@ -196,3 +196,7 @@ cython_debug/
 .vscode/
 test.py
 .git/
+
+
+# ignore files named VideoVault
+VideoVault*
