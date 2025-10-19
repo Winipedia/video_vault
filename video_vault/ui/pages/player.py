@@ -5,7 +5,7 @@ This module contains the player page class for the VideoVault application.
 
 from pathlib import Path
 
-from winipedia_utils.pyside.ui.pages.player import Player as PlayerPage
+from winipedia_pyside.ui.pages.player import Player as PlayerPage
 
 from video_vault.core.security import get_or_create_app_aes_gcm
 from video_vault.db.models import File

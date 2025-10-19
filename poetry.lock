@@ -365,14 +365,14 @@ files = [
 
 [[package]]
 name = "iniconfig"
-version = "2.2.0"
+version = "2.3.0"
 description = "brain-dead simple config-ini parsing"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 files = [
-    {file = "iniconfig-2.2.0-py3-none-any.whl", hash = "sha256:eeea4a571b616cf2951fbeeda9490863f3d1882a21cf673cd3236545488d6f1e"},
-    {file = "iniconfig-2.2.0.tar.gz", hash = "sha256:1807d2bc2eb4231a5e40e2ecee093fc25fc0eb0e2840f01ea50a1d15380adbff"},
+    {file = "iniconfig-2.3.0-py3-none-any.whl", hash = "sha256:f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12"},
+    {file = "iniconfig-2.3.0.tar.gz", hash = "sha256:c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730"},
 ]
 
 [[package]]
@@ -1533,26 +1533,56 @@ docs = ["furo (>=2023.7.26)", "proselint (>=0.13)", "sphinx (>=7.1.2,!=7.3)", "s
 test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7)", "packaging (>=23.1)", "pytest (>=7.4)", "pytest-env (>=0.8.2)", "pytest-freezer (>=0.4.8) ; platform_python_implementation == \"PyPy\" or platform_python_implementation == \"GraalVM\" or platform_python_implementation == \"CPython\" and sys_platform == \"win32\" and python_version >= \"3.13\"", "pytest-mock (>=3.11.1)", "pytest-randomly (>=3.12)", "pytest-timeout (>=2.1)", "setuptools (>=68)", "time-machine (>=2.10) ; platform_python_implementation == \"CPython\""]
 
 [[package]]
-name = "winipedia-utils"
-version = "0.2.0"
-description = "A package with many utility functions"
+name = "winipedia-django"
+version = "0.2.2"
+description = "A utils package for django"
+optional = false
+python-versions = ">=3.12"
+groups = ["main"]
+files = [
+    {file = "winipedia_django-0.2.2-py3-none-any.whl", hash = "sha256:aa09f37406e028978df83311c35af4e25dea4682ff033cb35a25197b3c45f141"},
+    {file = "winipedia_django-0.2.2.tar.gz", hash = "sha256:92b3448d2ad465fa75833fea73ce69940756534bbe00bd964695cd96d8fe43a9"},
+]
+
+[package.dependencies]
+django = ">=5.2.7,<6.0.0"
+winipedia-utils = ">=0.2.10,<0.3.0"
+
+[[package]]
+name = "winipedia-pyside"
+version = "0.2.1"
+description = "A package for pyside utils"
 optional = false
 python-versions = "<3.14,>=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_utils-0.2.0-py3-none-any.whl", hash = "sha256:05fc78e2aa2f6b27afda9c883383d8eb38be3806c5fc2687c6f0a2918eaa6cb8"},
-    {file = "winipedia_utils-0.2.0.tar.gz", hash = "sha256:6607742a361c4f5f156c3affd9f99d8445a1b3f6c7690f84783c8052fdb8adb9"},
+    {file = "winipedia_pyside-0.2.1-py3-none-any.whl", hash = "sha256:fb3f0467789da7291f97a827807e537c04051317e7e849a7836b3a6401d70d6c"},
+    {file = "winipedia_pyside-0.2.1.tar.gz", hash = "sha256:795b596169cd6ff5c85c54d58e279de848f116eb55a59cca9a86867b0218db68"},
+]
+
+[package.dependencies]
+pyqt-toast-notification = ">=1.3.3,<2.0.0"
+pyside6 = ">=6.10.0,<7.0.0"
+winipedia-utils = ">=0.2.2,<0.3.0"
+
+[[package]]
+name = "winipedia-utils"
+version = "0.2.17"
+description = "A package with many utility functions"
+optional = false
+python-versions = ">=3.12"
+groups = ["main"]
+files = [
+    {file = "winipedia_utils-0.2.17-py3-none-any.whl", hash = "sha256:926528bf7d0523921733e399d17b28c78cd302d0acb2d8b175372570f58678fa"},
+    {file = "winipedia_utils-0.2.17.tar.gz", hash = "sha256:580d4249280d63d09eb0109898e40f58b968364932c5c5c97f73650ad223526d"},
 ]
 
 [package.dependencies]
 cryptography = ">=45.0.5,<46.0.0"
 defusedxml = ">=0.7.1,<0.8.0"
-django = ">=5.2.1,<6.0.0"
 keyring = ">=25.6.0,<26.0.0"
 pathspec = ">=0.12.1,<0.13.0"
 polars = ">=1.34.0,<2.0.0"
-pyqt-toast-notification = ">=1.3.3,<2.0.0"
-pyside6 = ">=6.9.1,<7.0.0"
 pyyaml = ">=6.0.2,<7.0.0"
 setuptools = ">=80.3.1,<81.0.0"
 tomlkit = ">=0.13.2,<0.14.0"
@@ -1598,4 +1628,4 @@ typing-extensions = ">=4.13.2,<5.0.0"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.14"
-content-hash = "23d8a293a14b623d66878d4038fc9be5d03bc75843af0ddd9e7095850bfe77ff"
+content-hash = "daae3ac77d218ed3554589c09b672b9477479f700e2f347ca73a50cb75bb452f"

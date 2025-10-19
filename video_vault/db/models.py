@@ -5,8 +5,8 @@ from typing import Any
 
 from django.core.files.base import ContentFile
 from django.db import models
-from winipedia_utils.django.database import BaseModel
-from winipedia_utils.pyside.core.py_qiodevice import EncryptedPyQFile
+from winipedia_django.database import BaseModel
+from winipedia_pyside.core.py_qiodevice import EncryptedPyQFile
 
 from video_vault.core.security import get_or_create_app_aes_gcm
 

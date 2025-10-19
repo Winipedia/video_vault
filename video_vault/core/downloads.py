@@ -10,8 +10,8 @@ from typing import ClassVar
 
 import yt_dlp
 from PySide6.QtCore import QThread
+from winipedia_pyside.ui.widgets.notification import Notification
 from winipedia_utils.logging.logger import get_logger
-from winipedia_utils.pyside.ui.widgets.notification import Notification
 from yt_dlp.utils import DownloadError
 
 from video_vault.db.models import File

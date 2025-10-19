@@ -3,8 +3,8 @@
 This module contains the main window class for the VideoVault application.
 """
 
-from winipedia_utils.pyside.ui.pages.base.base import Base as BasePage
-from winipedia_utils.pyside.ui.windows.base.base import Base as BaseWindow
+from winipedia_pyside.ui.pages.base.base import Base as BasePage
+from winipedia_pyside.ui.windows.base.base import Base as BaseWindow
 
 from video_vault.ui import pages
 from video_vault.ui.pages.downloads import Downloads as DownloadsPage
