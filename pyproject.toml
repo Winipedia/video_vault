@@ -1,6 +1,6 @@
 [project]
 name = "video-vault"
-version = "0.1.8"
+version = "0.1.10"
 description = "An application to download any video"
 authors = [
     {name = "Winipedia", email = "win.steveker@gmx.de"}
@@ -13,38 +13,37 @@ dynamic = ["dependencies"]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry]
-package-mode = false  # bc this is private use
+[[tool.poetry.packages]]
+include = "video_vault"
 
 [tool.poetry.dependencies]
-pyside6 = "^6.9.1"
-yt-dlp = "^2025.6.9"
-pyqt-toast-notification = "^1.3.3"
-platformdirs = "^4.3.8"
-keyring = "^25.6.0"
-cryptography = "^45.0.4"
-imageio-ffmpeg = "^0.6.0"
-winipedia-pyside = "^0.2.1"
-winipedia-django = "^0.2.2"
+yt-dlp = "*"
+cryptography = "*"
+pyqt-toast-notification = "*"
+winipedia-django = "*"
+keyring = "*"
+winipedia-pyside = "*"
+platformdirs = "*"
+pyside6 = "*"
+imageio-ffmpeg = "*"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.11.12"
-pre-commit = "^4.2.0"
-mypy = "^1.16.0"
-pytest = "^8.4.0"
-bandit = "^1.8.3"
-types-setuptools = "^80.9.0.20250529"
-types-tqdm = "^4.67.0.20250516"
-types-defusedxml = "^0.7.0.20250516"
-types-pyyaml = "^6.0.12.20250516"
-pytest-mock = "^3.14.1"
-django-stubs = "^5.2.0"
-yt-dlp-types = "^0.0.17"
-pyinstaller = "^6.14.2"
-types-pyinstaller = "^6.14.0.20250611"
-pillow = "^11.3.0"
-pytest-qt = "^4.5.0"
-
+mypy = "*"
+bandit = "*"
+yt-dlp-types = "*"
+pyinstaller = "*"
+types-tqdm = "*"
+types-pyyaml = "*"
+django-stubs = "*"
+types-defusedxml = "*"
+types-pyinstaller = "*"
+pre-commit = "*"
+ruff = "*"
+types-setuptools = "*"
+pytest-mock = "*"
+pillow = "*"
+pytest-qt = "*"
+pytest = "*"
 
 [tool.ruff]
 exclude = [".*", "**/migrations/*.py"]
@@ -67,3 +66,4 @@ files = "."
 testpaths = ["tests"]
 
 [tool.bandit]
+exclude_dirs = ["experiment.py"]

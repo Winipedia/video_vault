@@ -7,7 +7,12 @@ from typing import TYPE_CHECKING
 from pytest_mock import MockerFixture
 from winipedia_utils.testing.assertions import assert_with_msg
 
-from video_vault.core.downloads import add_download, do_download, save_download
+from video_vault.core.downloads import (
+    DownloadWorker,
+    add_download,
+    do_download,
+    save_download,
+)
 
 if TYPE_CHECKING:
     from http.cookiejar import Cookie
@@ -85,8 +90,6 @@ class TestDownloadWorker:
 
     def test___init__(self) -> None:
         """Test method for __init__."""
-        from video_vault.core.downloads import DownloadWorker
-
         test_url = "https://www.youtube.com/watch?v=805SIqgDZIE"
         cookies: list[Cookie] = []
 
@@ -101,8 +104,6 @@ class TestDownloadWorker:
 
     def test_run(self, mocker: MockerFixture) -> None:
         """Test method for run."""
-        from video_vault.core.downloads import DownloadWorker
-
         test_url = "https://www.youtube.com/watch?v=805SIqgDZIE"
         cookies: list[Cookie] = []
 
@@ -124,8 +125,6 @@ class TestDownloadWorker:
 
     def test_on_finished(self, mocker: MockerFixture) -> None:
         """Test method for on_finished."""
-        from video_vault.core.downloads import DownloadWorker
-
         test_url = "https://www.youtube.com/watch?v=805SIqgDZIE"
         cookies: list[Cookie] = []
 
@@ -151,8 +150,6 @@ class TestDownloadWorker:
 
     def test_show_notification(self, mocker: MockerFixture) -> None:
         """Test method for show_notification."""
-        from video_vault.core.downloads import DownloadWorker
-
         test_url = "https://www.youtube.com/watch?v=805SIqgDZIE"
         cookies: list[Cookie] = []
 
@@ -173,8 +170,6 @@ class TestDownloadWorker:
 
     def test_update_downloads_page(self, mocker: MockerFixture) -> None:
         """Test method for update_downloads_page."""
-        from video_vault.core.downloads import DownloadWorker
-
         test_url = "https://www.youtube.com/watch?v=805SIqgDZIE"
         cookies: list[Cookie] = []
 

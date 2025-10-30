@@ -63,7 +63,9 @@ class DownloadWorker(QThread):
 
     def update_downloads_page(self) -> None:
         """Update the downloads page."""
-        from video_vault.ui.pages.downloads import Downloads as DownloadsPage
+        from video_vault.ui.pages.downloads import (  # noqa: PLC0415
+            Downloads as DownloadsPage,  # avoid circular import
+        )
 
         if not self.successful:
             return
