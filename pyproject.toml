@@ -1,6 +1,6 @@
 [project]
 name = "video-vault"
-version = "0.1.19"
+version = "0.1.20"
 description = "An application to download any video"
 authors = [
     {name = "Winipedia", email = "win.steveker@gmx.de"}
