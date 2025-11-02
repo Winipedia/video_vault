@@ -53,8 +53,6 @@ jobs:
       id: setup_keyring
       run: poetry run pip install keyrings.alt && poetry run python -c "import keyring;
         from keyrings.alt.file import PlaintextKeyring; keyring.set_keyring(PlaintextKeyring());"
-      env:
-        REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
     - name: Protect Repository
       id: protect_repository
       run: poetry run python -m winipedia_utils.git.github.repo.protect
