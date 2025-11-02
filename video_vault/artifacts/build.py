@@ -46,6 +46,8 @@ class VideoVaultBuild(Build):
                 f"{project_root / 'video_vault' / 'db' / 'migrations'}{os.pathsep}video_vault/db/migrations",  # noqa: E501
                 "--add-data",
                 f"{winipedia_utils_path / 'resources' / 'svgs'}{os.pathsep}winipedia_utils/resources/svgs",  # noqa: E501
+                "--add-data",
+                f"{project_root / 'pyproject.toml'}{os.pathsep}.",
             ]
 
             run(options)
