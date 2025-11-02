@@ -1842,14 +1842,14 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "winipedia-django"
-version = "0.2.22"
+version = "0.2.23"
 description = "A utils package for django"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_django-0.2.22-py3-none-any.whl", hash = "sha256:fc18860429663b2415930cc9fa8687f96d61575fa6fa54174985fec694f62e36"},
-    {file = "winipedia_django-0.2.22.tar.gz", hash = "sha256:f4ed81d9af68b0e9db7ee7ca80ecf43ae1845bc9260081659beae77f091d7870"},
+    {file = "winipedia_django-0.2.23-py3-none-any.whl", hash = "sha256:d69b6e1b0f8bfbf35ddc7a361e0a1cd608e2e3c3e58dad522dff66a35bc136a7"},
+    {file = "winipedia_django-0.2.23.tar.gz", hash = "sha256:1a8824e704a5278764a71873e0d9e8ac803df100591fe228789b32f697cd7dc6"},
 ]
 
 [package.dependencies]
@@ -1858,14 +1858,14 @@ winipedia-utils = "*"
 
 [[package]]
 name = "winipedia-pyside"
-version = "0.2.35"
+version = "0.2.36"
 description = "A package for pyside utils"
 optional = false
 python-versions = "<3.14,>=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_pyside-0.2.35-py3-none-any.whl", hash = "sha256:929c1ef6ef5f2914bed9c6f7e7e592d92aa216e96268db2f015bf1d1c76c1c90"},
-    {file = "winipedia_pyside-0.2.35.tar.gz", hash = "sha256:9b2c1c2bf48c8242c08d819acc55ffaec5fb96e7d449a10de1509fb7714b9124"},
+    {file = "winipedia_pyside-0.2.36-py3-none-any.whl", hash = "sha256:f0dd4d86b3e8065c6b10f0137fc3f7dbfff04e414f8b62db59ea83ad8ba07b76"},
+    {file = "winipedia_pyside-0.2.36.tar.gz", hash = "sha256:e22c212a17d680c3642112c0792dc0ee5ff77ef69496650b3c1f71b6f50bb1d0"},
 ]
 
 [package.dependencies]
@@ -1875,14 +1875,14 @@ winipedia-utils = "*"
 
 [[package]]
 name = "winipedia-utils"
-version = "0.6.4"
+version = "0.6.5"
 description = "A package with many utility functions"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_utils-0.6.4-py3-none-any.whl", hash = "sha256:bc1bf1e78d0397adb88693b87de341d1d491b2151b57cd1ffc3665be9da57e49"},
-    {file = "winipedia_utils-0.6.4.tar.gz", hash = "sha256:95ab29f9bc81a8494b4529f832aeaab8cae9ab4d3dfa527a30f0fb94a1b611f5"},
+    {file = "winipedia_utils-0.6.5-py3-none-any.whl", hash = "sha256:cd646df6942cc71d4ebd838eafccb79dab890e8aa0ff88900cc43a59956d4eac"},
+    {file = "winipedia_utils-0.6.5.tar.gz", hash = "sha256:4e672b6049f691dc1026d51cd2a2be67ec8740e030731d14deddc948b26287c1"},
 ]
 
 [package.dependencies]
