@@ -2,6 +2,7 @@
 
 import os
 import platform
+import shutil
 import tempfile
 from pathlib import Path
 
@@ -37,6 +38,8 @@ class VideoVaultBuild(Build):
                 "--noconsole",
                 "--workpath",
                 temp_build_dir,
+                "--specpath",
+                temp_build_dir,
                 "--distpath",
                 str(cls.ARTIFACTS_PATH),
                 "--icon",
@@ -54,7 +57,22 @@ class VideoVaultBuild(Build):
         binary_path = cls.ARTIFACTS_PATH / APP_NAME
         if platform.system() == "Windows":
             binary_path = binary_path.with_suffix(".exe")
-
+            return [binary_path]
+        if platform.system() == "Darwin":
+            # On macOS, PyInstaller creates a .app bundle (directory)
+            # We need to zip it for GitHub Releases
+            app_bundle = cls.ARTIFACTS_PATH / f"{APP_NAME}.app"
+            if app_bundle.exists():
+                zip_path = cls.ARTIFACTS_PATH / f"{APP_NAME}.zip"
+                shutil.make_archive(
+                    str(zip_path.with_suffix("")),
+                    "zip",
+                    cls.ARTIFACTS_PATH,
+                    f"{APP_NAME}.app",
+                )
+                return [zip_path]
+            return [binary_path]
+        # Linux and other platforms
         return [binary_path]
 
 
