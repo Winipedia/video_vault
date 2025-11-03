@@ -28,6 +28,9 @@ class TestDownloads:
         mock_add_download_buttons_scroll_area = mocker.patch.object(
             Downloads, "add_download_buttons_scroll_area"
         )
+        mock_add_delete_all_downloads_button = mocker.patch.object(
+            Downloads, "add_delete_all_downloads_button"
+        )
 
         # Create a mock instance and call setup
         page = Downloads.__new__(Downloads)
@@ -36,6 +39,7 @@ class TestDownloads:
         # Verify both methods were called
         mock_add_add_downloads_button.assert_called_once()
         mock_add_download_buttons_scroll_area.assert_called_once()
+        mock_add_delete_all_downloads_button.assert_called_once()
 
     def test_post_setup(self) -> None:
         """Test method for post_setup."""
@@ -44,6 +48,62 @@ class TestDownloads:
         page.post_setup()
 
         # Since post_setup is empty, just verify it completed without error
+
+    def test_add_delete_all_downloads_button(self, mocker: MockerFixture) -> None:
+        """Test method for add_delete_all_downloads_button."""
+        # Mock the UI methods to avoid Qt widget creation
+        mock_h_layout = mocker.Mock()
+        mock_button = mocker.Mock()
+        mocker.patch(
+            "video_vault.ui.pages.downloads.QPushButton", return_value=mock_button
+        )
+        mocker.patch.object(Downloads, "get_svg_icon")
+
+        # Create a mock instance
+        page = Downloads.__new__(Downloads)
+        page.h_layout = mock_h_layout
+
+        # Call add_delete_all_downloads_button
+        page.add_delete_all_downloads_button()
+
+        # Verify button was added to layout
+        mock_h_layout.addWidget.assert_called_once_with(mock_button)
+        # Verify alignment was set
+        mock_h_layout.setAlignment.assert_called_once()
+        # Verify button was configured
+        mock_button.setIcon.assert_called_once()
+        mock_button.setSizePolicy.assert_called_once()
+
+    def test_on_delete_all_downloads(self, mocker: MockerFixture) -> None:
+        """Test method for on_delete_all_downloads."""
+        # Mock File.objects to get all downloads
+        mock_file1 = mocker.Mock()
+        mock_file2 = mocker.Mock()
+        mock_files = [mock_file1, mock_file2]
+
+        mock_file_objects = mocker.patch("video_vault.ui.pages.downloads.File.objects")
+        mock_file_objects.all.return_value = mock_files
+
+        # Mock remove_download_and_button method
+        mock_remove = mocker.patch.object(Downloads, "remove_download_and_button")
+
+        # Create a mock instance with button_to_download mapping
+        page = Downloads.__new__(Downloads)
+        mock_button1 = mocker.Mock()
+        mock_button2 = mocker.Mock()
+        page.button_to_download = {mock_button1: mock_file1, mock_button2: mock_file2}
+
+        # Call on_delete_all_downloads
+        page.on_delete_all_downloads()
+
+        # Verify remove_download_and_button was called for each download
+        expected_call_count = 2
+        assert_with_msg(
+            mock_remove.call_count == expected_call_count,
+            "Should call remove_download_and_button for each download",
+        )
+        mock_remove.assert_any_call(mock_button1)
+        mock_remove.assert_any_call(mock_button2)
 
     def test_add_add_downloads_button(self, mocker: MockerFixture) -> None:
         """Test method for add_add_downloads_button."""

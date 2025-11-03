@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 from winipedia_pyside.ui.pages.base.base import Base as BasePage
+from winipedia_utils.data.structures.dicts import reverse_dict
 
 from video_vault.db.models import File
 from video_vault.ui.pages.add_downloads import AddDownloads as AddDownloadsPage
@@ -31,11 +32,33 @@ class Downloads(BasePage):
     def setup(self) -> None:
         """Setup the UI."""
         # add button in the top right to add a download
+        self.add_delete_all_downloads_button()
         self.add_add_downloads_button()
         self.add_download_buttons_scroll_area()
 
     def post_setup(self) -> None:
         """Setup the UI."""
+
+    def add_delete_all_downloads_button(self) -> None:
+        """Add a button to delete all downloads."""
+        button = QPushButton("Delete All")
+        button.clicked.connect(self.on_delete_all_downloads)
+        self.h_layout.addWidget(button)
+        # align to be in center
+        self.h_layout.setAlignment(
+            button, Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop
+        )
+        # icon
+        button.setIcon(self.get_svg_icon("delete_garbage_can"))
+        # we need the button to be small
+        button.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+
+    def on_delete_all_downloads(self) -> None:
+        """Delete all downloads."""
+        download_to_button = reverse_dict(self.button_to_download)
+        for download in File.objects.all():
+            button = download_to_button[download]
+            self.remove_download_and_button(button)
 
     def add_add_downloads_button(self) -> None:
         """Add a button to add a download."""
