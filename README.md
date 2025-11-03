@@ -20,6 +20,7 @@ A secure desktop application for downloading, storing, and watching videos offli
 - **Encrypted Playback**: Seamlessly plays encrypted videos without temporary decryption
 - **Position Memory**: Automatically saves and resumes from your last watched position
 - **Full-Screen Support**: Immersive viewing experience
+- **Hardware Acceleration**: Utilizes VA-API for hardware-accelerated video decoding
 
 ### 🎨 User Interface
 - **Netflix-Inspired Design**: Dark theme with red accents for comfortable viewing
@@ -33,6 +34,7 @@ A secure desktop application for downloading, storing, and watching videos offli
 - Python 3.12 or higher
 - Poetry (for dependency management)
 - FFmpeg (automatically handled by the application)
+- VA-API compatible hardware (for hardware-accelerated video decoding, e.g. on Ubuntu run sudo apt install libva2 libva-drm2 libva-x11-2 libva-glx2, those are necessary for QMediaPlayer to work with VA-API)
 
 ### Setup
 

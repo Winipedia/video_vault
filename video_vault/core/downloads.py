@@ -87,13 +87,21 @@ def do_download(tempdir: str, url: str, cookies: list[Cookie]) -> Path:
 
     # make ydl options so we don not write to file
     ffmpeg_path = get_ffmpeg_path()
-    ydl_opts: yt_dlp._Params = {
-        "paths": {"home": tempdir},  # type: ignore[typeddict-item]
+    ydl_opts = {
+        "paths": {"home": tempdir},
         "cookies": cookies,
         "ffmpeg_location": str(ffmpeg_path) if ffmpeg_path is not None else None,
+        "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]",
+        "merge_output_format": "mp4",
+        "postprocessors": [
+            {
+                "key": "FFmpegVideoConvertor",
+                "preferedformat": "mp4",
+            }
+        ],
     }
     try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:  # type: ignore[arg-type]
             info = ydl.extract_info(url, download=True)
     except Exception as e:
         msg = f"Download failed: {e}"
