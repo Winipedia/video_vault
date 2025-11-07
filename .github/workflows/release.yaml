@@ -56,6 +56,8 @@ jobs:
     - name: Install Pyside System Dependencies
       id: install_pyside_system_dependencies
       run: sudo apt-get update && sudo apt-get install -y libegl1 libpulse0
+      env:
+        REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
       if: runner.os == 'Linux'
     - name: Protect Repository
       id: protect_repository
@@ -64,8 +66,7 @@ jobs:
         REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
     - name: Run Pre Commit Hooks
       id: run_pre_commit_hooks
-      run: poetry version patch && git add pyproject.toml && poetry run pre-commit
-        run --all-files --verbose
+      run: poetry run pre-commit run --all-files --verbose
       env:
         REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
         QT_QPA_PLATFORM: offscreen
@@ -120,6 +121,10 @@ jobs:
       if: runner.os == 'Linux'
     - name: Build Artifacts
       id: build_artifacts
+      uses: actions/upload-artifact@main
+      with:
+        name: video_vault-${{ runner.os }}
+        path: artifacts
       run: poetry run python -m video_vault.artifacts.build
     - name: Upload Artifacts
       id: upload_artifacts
@@ -160,10 +165,12 @@ jobs:
       id: setup_git
       run: git config --global user.email "github-actions[bot]@users.noreply.github.com"
         && git config --global user.name "github-actions[bot]"
+    - name: Add Version Patch
+      id: add_version_patch
+      run: poetry version patch && git add pyproject.toml
     - name: Run Pre Commit Hooks
       id: run_pre_commit_hooks
-      run: poetry version patch && git add pyproject.toml && poetry run pre-commit
-        run --all-files --verbose
+      run: poetry run pre-commit run --all-files --verbose
       env:
         REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
         QT_QPA_PLATFORM: offscreen
