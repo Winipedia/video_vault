@@ -52,8 +52,6 @@ jobs:
     - name: Install Pyside System Dependencies
       id: install_pyside_system_dependencies
       run: sudo apt-get update && sudo apt-get install -y libegl1 libpulse0
-      env:
-        REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
       if: runner.os == 'Linux'
     - name: Protect Repository
       id: protect_repository
