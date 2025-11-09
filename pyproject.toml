@@ -7,7 +7,6 @@ authors = [
 ]
 readme = "README.md"
 requires-python = ">=3.12,<3.14"
-dynamic = ["dependencies"]
 dependencies = ["cryptography", "platformdirs", "pyside6", "keyring", "pyqt-toast-notification", "winipedia-django", "imageio-ffmpeg", "winipedia-pyside", "yt-dlp"]
 
 [build-system]
