@@ -1941,14 +1941,14 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "winipedia-django"
-version = "0.2.25"
+version = "0.2.26"
 description = "A utils package for django"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_django-0.2.25-py3-none-any.whl", hash = "sha256:fc7f8399b24a65c11b7c22a83839770e5ef8955af316eb0e6a7fba18cba9f780"},
-    {file = "winipedia_django-0.2.25.tar.gz", hash = "sha256:c70617d64f0d595e42b0a42b76c237fab59c0e8d4599264ebc8a35aef41f9266"},
+    {file = "winipedia_django-0.2.26-py3-none-any.whl", hash = "sha256:85ac2edf9ce05d9ab03377d0dfa025da4b3cb072f629b72b712bb3a0d2e733b6"},
+    {file = "winipedia_django-0.2.26.tar.gz", hash = "sha256:692fac6c9a31b5166696515c96bc4b971647da7e1bb623488a0a6d22ea9cfd6f"},
 ]
 
 [package.dependencies]
@@ -1957,14 +1957,14 @@ winipedia-utils = "*"
 
 [[package]]
 name = "winipedia-pyside"
-version = "0.2.38"
+version = "0.2.39"
 description = "A package for pyside utils"
 optional = false
 python-versions = "<3.14,>=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_pyside-0.2.38-py3-none-any.whl", hash = "sha256:395b32263a7c8f497e5fd07d457985800d43a30810ace32cd73cd4c22428566e"},
-    {file = "winipedia_pyside-0.2.38.tar.gz", hash = "sha256:bdc3778fd2d45bc7495c3202368237aa7480e723f281cee39eaeaf100111ae22"},
+    {file = "winipedia_pyside-0.2.39-py3-none-any.whl", hash = "sha256:7fcfc8051968b4d0fb749302aa10c6a69f1d596b042b6916a1af87c26a9e98c3"},
+    {file = "winipedia_pyside-0.2.39.tar.gz", hash = "sha256:05551c85a9231039f911fbf8596c9a94aff40936572daa61570e22824cb854aa"},
 ]
 
 [package.dependencies]
