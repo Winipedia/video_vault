@@ -3,7 +3,7 @@
 import pytest
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from pytest_mock import MockerFixture
-from winipedia_utils.testing.assertions import assert_with_msg
+from winipedia_utils.utils.testing.assertions import assert_with_msg
 
 from video_vault.core.consts import APP_NAME, AUTHOR
 from video_vault.core.security import get_app_key_as_str, get_or_create_app_aes_gcm

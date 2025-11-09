@@ -1941,14 +1941,14 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "winipedia-django"
-version = "0.2.26"
+version = "0.2.27"
 description = "A utils package for django"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_django-0.2.26-py3-none-any.whl", hash = "sha256:85ac2edf9ce05d9ab03377d0dfa025da4b3cb072f629b72b712bb3a0d2e733b6"},
-    {file = "winipedia_django-0.2.26.tar.gz", hash = "sha256:692fac6c9a31b5166696515c96bc4b971647da7e1bb623488a0a6d22ea9cfd6f"},
+    {file = "winipedia_django-0.2.27-py3-none-any.whl", hash = "sha256:a76bc0af384cbe47ecf93fae966bb8022a085d7d8448a8b5f89298757388ecec"},
+    {file = "winipedia_django-0.2.27.tar.gz", hash = "sha256:c3697ae7f1aea7e9becd3ae7221368f52318e51fca738c4068b17dddb8344ebb"},
 ]
 
 [package.dependencies]
@@ -1957,14 +1957,14 @@ winipedia-utils = "*"
 
 [[package]]
 name = "winipedia-pyside"
-version = "0.2.39"
+version = "0.2.40"
 description = "A package for pyside utils"
 optional = false
 python-versions = "<3.14,>=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_pyside-0.2.39-py3-none-any.whl", hash = "sha256:7fcfc8051968b4d0fb749302aa10c6a69f1d596b042b6916a1af87c26a9e98c3"},
-    {file = "winipedia_pyside-0.2.39.tar.gz", hash = "sha256:05551c85a9231039f911fbf8596c9a94aff40936572daa61570e22824cb854aa"},
+    {file = "winipedia_pyside-0.2.40-py3-none-any.whl", hash = "sha256:dd65d0d50f48b26af2742ac622932378c0924260e1b4d5741e4d33e91c7a75f6"},
+    {file = "winipedia_pyside-0.2.40.tar.gz", hash = "sha256:bd22de7e632d609d79a301991c187d05cde6d36bd2e1b5451e45fffd01dc246b"},
 ]
 
 [package.dependencies]
@@ -1974,14 +1974,14 @@ winipedia-utils = "*"
 
 [[package]]
 name = "winipedia-utils"
-version = "0.6.13"
+version = "0.7.2"
 description = "A package with many utility functions"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_utils-0.6.13-py3-none-any.whl", hash = "sha256:4df335c8855eae3280743cdfd69c4fb9ded0f495a3d4e52379489d52cc4b7108"},
-    {file = "winipedia_utils-0.6.13.tar.gz", hash = "sha256:009119dc82a1ea01580b2193f764db864b84f4d0bb6d0944050cde9f8efd5a2e"},
+    {file = "winipedia_utils-0.7.2-py3-none-any.whl", hash = "sha256:4ffc7c84c8a69e27b929a4f9a827eede94cd20c1fdfc137b326bc58f999e7519"},
+    {file = "winipedia_utils-0.7.2.tar.gz", hash = "sha256:ce77189939413601a9eb08664036a25cabea85fd7c9411d348b54d62e2c40cbd"},
 ]
 
 [package.dependencies]
@@ -1990,6 +1990,7 @@ defusedxml = "*"
 dotenv = "*"
 keyring = "*"
 networkx = "*"
+packaging = "*"
 pathspec = "*"
 polars = "*"
 pygithub = "*"

@@ -16,7 +16,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 from winipedia_pyside.ui.pages.base.base import Base as BasePage
-from winipedia_utils.data.structures.dicts import reverse_dict
+from winipedia_utils.utils.data.structures.dicts import reverse_dict
 
 from video_vault.db.models import File
 from video_vault.ui.pages.add_downloads import AddDownloads as AddDownloadsPage

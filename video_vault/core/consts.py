@@ -1,6 +1,6 @@
 """This module contains constants for the application."""
 
-from winipedia_utils.text.string import make_name_from_obj
+from winipedia_utils.utils.data.structures.text.string import make_name_from_obj
 
 import video_vault
 

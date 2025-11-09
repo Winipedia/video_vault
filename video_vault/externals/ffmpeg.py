@@ -3,7 +3,7 @@
 from pathlib import Path
 
 import imageio_ffmpeg  # type: ignore[import-untyped]
-from winipedia_utils.logging.logger import get_logger
+from winipedia_utils.utils.logging.logger import get_logger
 
 logger = get_logger(__name__)
 

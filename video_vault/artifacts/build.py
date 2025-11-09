@@ -8,7 +8,7 @@ from pathlib import Path
 
 import winipedia_utils
 from PyInstaller.__main__ import run
-from winipedia_utils.artifacts.build import Build
+from winipedia_utils.dev.artifacts.build import Build
 
 import video_vault
 from video_vault.core.consts import APP_NAME

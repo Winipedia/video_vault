@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from winipedia_utils.testing.assertions import assert_with_msg
+from winipedia_utils.utils.testing.assertions import assert_with_msg
 
 from video_vault.db.models import File
 

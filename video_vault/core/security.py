@@ -4,7 +4,7 @@ This module contains functions to encrypt and decrypt data.
 """
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-from winipedia_utils.security.keyring import get_key_as_str, get_or_create_aes_gcm
+from winipedia_utils.utils.security.keyring import get_key_as_str, get_or_create_aes_gcm
 
 from video_vault.core.consts import APP_NAME, AUTHOR
 
