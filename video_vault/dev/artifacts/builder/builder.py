@@ -12,9 +12,14 @@ from pathlib import Path
 import winipedia_utils
 from PyInstaller.__main__ import run
 from winipedia_utils.dev.artifacts.builder.base.base import Builder
+from winipedia_utils.utils.modules.module import make_obj_importpath, to_path
+from winipedia_utils.utils.resources import svgs
 
 import video_vault
-from video_vault.core.consts import APP_NAME
+from video_vault.app import main
+from video_vault.app.core.consts import APP_NAME
+from video_vault.app.db import migrations
+from video_vault.dev import artifacts
 
 
 class VideoVaultBuilder(Builder):
@@ -27,7 +32,19 @@ class VideoVaultBuilder(Builder):
         project_root = Path(video_vault.__file__).parent.parent
 
         winipedia_utils_path = Path(winipedia_utils.__file__).parent
-        main_script = project_root / "video_vault" / "main.py"
+        main_script = project_root / to_path(make_obj_importpath(main), is_package=True)
+
+        app_icon_path = project_root / (
+            to_path(make_obj_importpath(artifacts), is_package=True) / "app_icon.ico"
+        )
+
+        migrations_path_relative = to_path(
+            make_obj_importpath(migrations), is_package=True
+        )
+        migrations_path = project_root / migrations_path_relative
+
+        svgs_path_relative = to_path(make_obj_importpath(svgs), is_package=True)
+        svgs_path = winipedia_utils_path / svgs_path_relative
 
         # --- Temporary build dir ---
         with tempfile.TemporaryDirectory() as temp_build_dir:
@@ -46,14 +63,12 @@ class VideoVaultBuilder(Builder):
                 "--distpath",
                 str(cls.ARTIFACTS_PATH),
                 "--icon",
-                str(
-                    project_root / "video_vault" / "dev" / "artifacts" / "app_icon.ico"
-                ),
+                str(app_icon_path),
                 # --- Add data folders ---
                 "--add-data",
-                f"{project_root / 'video_vault' / 'db' / 'migrations'}{os.pathsep}video_vault/db/migrations",  # noqa: E501
+                f"{migrations_path}{os.pathsep}{migrations_path_relative}",
                 "--add-data",
-                f"{winipedia_utils_path / 'utils' / 'resources' / 'svgs'}{os.pathsep}winipedia_utils/utils/resources/svgs",  # noqa: E501
+                f"{svgs_path}{os.pathsep}{svgs_path_relative}",
             ]
 
             run(options)
@@ -74,7 +89,3 @@ class VideoVaultBuilder(Builder):
                     cls.ARTIFACTS_PATH,
                     f"{APP_NAME}.app",
                 )
-
-
-if __name__ == "__main__":
-    VideoVaultBuilder()
