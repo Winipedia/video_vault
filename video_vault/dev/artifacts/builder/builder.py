@@ -32,7 +32,9 @@ class VideoVaultBuilder(Builder):
         project_root = Path(video_vault.__file__).parent.parent
 
         winipedia_utils_path = Path(winipedia_utils.__file__).parent
-        main_script = project_root / to_path(make_obj_importpath(main), is_package=True)
+        main_script = project_root / to_path(
+            make_obj_importpath(main), is_package=True
+        ).with_suffix(".py")
 
         app_icon_path = project_root / (
             to_path(make_obj_importpath(artifacts), is_package=True) / "app_icon.ico"
