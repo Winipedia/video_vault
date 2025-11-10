@@ -117,9 +117,6 @@ jobs:
       id: build_artifacts
       run: poetry run python -m winipedia_utils.dev.artifacts.build
       if: runner.os == 'Linux'
-    - name: Build Artifacts
-      id: build_artifacts
-      run: poetry run python -m video_vault.artifacts.build
     - name: Upload Artifacts
       id: upload_artifacts
       uses: actions/upload-artifact@main
