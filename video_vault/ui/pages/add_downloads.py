@@ -8,7 +8,7 @@ from PySide6.QtWidgets import (
     QPushButton,
     QSizePolicy,
 )
-from winipedia_pyside.ui.pages.browser import Browser as BrowserPage
+from winipedia_pyside.utils.ui.pages.browser import Browser as BrowserPage
 
 from video_vault.core.downloads import DownloadWorker
 

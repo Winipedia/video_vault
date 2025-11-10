@@ -1,4 +1,7 @@
-"""Build script for video_vault without spec file."""
+"""Build script.
+
+All subclasses of Builder in the builds package are automatically called.
+"""
 
 import os
 import platform
@@ -8,17 +11,17 @@ from pathlib import Path
 
 import winipedia_utils
 from PyInstaller.__main__ import run
-from winipedia_utils.dev.artifacts.build import Build
+from winipedia_utils.dev.artifacts.builder.base.base import Builder
 
 import video_vault
 from video_vault.core.consts import APP_NAME
 
 
-class VideoVaultBuild(Build):
+class VideoVaultBuilder(Builder):
     """Build class for video_vault."""
 
     @classmethod
-    def get_artifacts(cls) -> list[Path]:
+    def create_artifacts(cls) -> None:
         """Get the artifacts."""
         # Resolve important paths
         project_root = Path(video_vault.__file__).parent.parent
@@ -43,7 +46,9 @@ class VideoVaultBuild(Build):
                 "--distpath",
                 str(cls.ARTIFACTS_PATH),
                 "--icon",
-                str(project_root / "video_vault" / "artifacts" / "app_icon.ico"),
+                str(
+                    project_root / "video_vault" / "dev" / "artifacts" / "app_icon.ico"
+                ),
                 # --- Add data folders ---
                 "--add-data",
                 f"{project_root / 'video_vault' / 'db' / 'migrations'}{os.pathsep}video_vault/db/migrations",  # noqa: E501
@@ -57,8 +62,7 @@ class VideoVaultBuild(Build):
         binary_path = cls.ARTIFACTS_PATH / APP_NAME
         if platform.system() == "Windows":
             binary_path = binary_path.with_suffix(".exe")
-            return [binary_path]
-        if platform.system() == "Darwin":
+        elif platform.system() == "Darwin":
             # On macOS, PyInstaller creates a .app bundle (directory)
             # We need to zip it for GitHub Releases
             app_bundle = cls.ARTIFACTS_PATH / f"{APP_NAME}.app"
@@ -70,11 +74,7 @@ class VideoVaultBuild(Build):
                     cls.ARTIFACTS_PATH,
                     f"{APP_NAME}.app",
                 )
-                return [zip_path]
-            return [binary_path]
-        # Linux and other platforms
-        return [binary_path]
 
 
 if __name__ == "__main__":
-    VideoVaultBuild()
+    VideoVaultBuilder()

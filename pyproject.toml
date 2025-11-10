@@ -7,7 +7,7 @@ authors = [
 ]
 readme = "README.md"
 requires-python = ">=3.12,<3.14"
-dependencies = ["cryptography", "platformdirs", "pyside6", "keyring", "pyqt-toast-notification", "winipedia-django", "imageio-ffmpeg", "winipedia-pyside", "yt-dlp"]
+dynamic = ["dependencies"]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -35,6 +35,17 @@ pytest-qt = "*"
 pytest = "*"
 types-networkx = "*"
 
+
+[tool.poetry.dependencies]
+yt-dlp = "*"
+pyside6 = "*"
+keyring = "*"
+winipedia-pyside = "*"
+platformdirs = "*"
+winipedia-django = "*"
+imageio-ffmpeg = "*"
+pyqt-toast-notification = "*"
+cryptography = "*"
 [tool.ruff]
 exclude = [".*", "**/migrations/*.py"]
 

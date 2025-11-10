@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-from winipedia_pyside.ui.pages.base.base import Base as BasePage
+from winipedia_pyside.utils.ui.pages.base.base import Base as BasePage
 from winipedia_utils.utils.data.structures.dicts import reverse_dict
 
 from video_vault.db.models import File
