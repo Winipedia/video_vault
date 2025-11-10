@@ -123,6 +123,7 @@ jobs:
       with:
         name: video_vault-${{ runner.os }}
         path: artifacts
+      run: poetry run python -m winipedia_utils.dev.artifacts.build
     - name: Upload Artifacts
       id: upload_artifacts
       uses: actions/upload-artifact@main
