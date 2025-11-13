@@ -1974,14 +1974,14 @@ winipedia-utils = "*"
 
 [[package]]
 name = "winipedia-utils"
-version = "0.7.14"
+version = "0.7.17"
 description = "A package with many utility functions"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_utils-0.7.14-py3-none-any.whl", hash = "sha256:db2e47ef2d6604e5c2b361a6607120decba72a1d86987196033ecdaddfbbd6fe"},
-    {file = "winipedia_utils-0.7.14.tar.gz", hash = "sha256:c016c0db4293b1060af75569992151df390beceec5ac483c41e01cbc50c96f97"},
+    {file = "winipedia_utils-0.7.17-py3-none-any.whl", hash = "sha256:889bf628c1c8cfcb8412360886db1db18b164d5b2da42b000b55b344b75db18f"},
+    {file = "winipedia_utils-0.7.17.tar.gz", hash = "sha256:087f7aded9c41ec99a2c3016b33b9c407ac63c64631d33dca35382ea589ea203"},
 ]
 
 [package.dependencies]
@@ -2050,4 +2050,4 @@ typing-extensions = ">=4.14.1,<5.0.0"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.14"
-content-hash = "b0a26ea8b6c00b3a7d836382962efe13ad6de1e1fe773cfcd7906f892a8fd576"
+content-hash = "16244296b5549304fa91b8b3611575f2a1fae8d0ab0051f35cbe094262ccf7be"

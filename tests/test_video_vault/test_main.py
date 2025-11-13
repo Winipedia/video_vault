@@ -4,8 +4,8 @@ from pytest_mock import MockerFixture
 from winipedia_utils.utils.modules.module import make_obj_importpath
 from winipedia_utils.utils.testing.assertions import assert_with_msg
 
-from video_vault.app import main as main_module
-from video_vault.app.main import main
+from video_vault import main as main_module
+from video_vault.main import main
 
 
 def test_main(mocker: MockerFixture) -> None:
