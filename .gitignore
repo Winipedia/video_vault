@@ -252,4 +252,4 @@ __marimo__/
 # winipedia_utils stuff
 # for walk_os_skipping_gitignore_patterns func
 # for executing experimental code
-experiment.py
+/experiment.py
