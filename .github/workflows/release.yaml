@@ -62,8 +62,6 @@ jobs:
     - name: Install Pyside System Dependencies
       id: install_pyside_system_dependencies
       run: sudo apt-get update && sudo apt-get install -y libegl1 libpulse0
-      env:
-        REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
       if: runner.os == 'Linux'
     - name: Protect Repository
       id: protect_repository
@@ -135,10 +133,6 @@ jobs:
       if: runner.os == 'Linux'
     - name: Build Artifacts
       id: build_artifacts
-      uses: actions/upload-artifact@main
-      with:
-        name: video_vault-${{ runner.os }}
-        path: artifacts
       run: poetry run winipedia-utils build
     - name: Upload Artifacts
       id: upload_artifacts
