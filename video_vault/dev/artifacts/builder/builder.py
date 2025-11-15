@@ -10,7 +10,6 @@ from winipedia_utils.dev.artifacts.builder.base.base import PyInstallerBuilder
 from winipedia_utils.utils.modules.module import make_obj_importpath, to_path
 from winipedia_utils.utils.resources import svgs
 
-import video_vault
 from video_vault.app.db import migrations
 
 
@@ -21,7 +20,7 @@ class VideoVaultBuilder(PyInstallerBuilder):
     def get_add_datas(cls) -> list[tuple[Path, Path]]:
         """Get the artifacts."""
         # Resolve important paths
-        project_root = Path(video_vault.__file__).parent.parent
+        project_root = cls.get_root_path()
 
         winipedia_utils_path = Path(winipedia_utils.__file__).parent.parent
 

@@ -971,7 +971,7 @@ version = "12.0.0"
 description = "Python Imaging Library (fork)"
 optional = false
 python-versions = ">=3.10"
-groups = ["dev"]
+groups = ["main", "dev"]
 files = [
     {file = "pillow-12.0.0-cp310-cp310-macosx_10_10_x86_64.whl", hash = "sha256:3adfb466bbc544b926d50fe8f4a4e6abd8c6bffd28a26177594e6e9b2b76572b"},
     {file = "pillow-12.0.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:1ac11e8ea4f611c3c0147424eae514028b5e9077dd99ab91e1bd7bc33ff145e1"},
@@ -2019,14 +2019,14 @@ winipedia-utils = "*"
 
 [[package]]
 name = "winipedia-utils"
-version = "0.7.25"
+version = "0.7.26"
 description = "A package with many utility functions"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_utils-0.7.25-py3-none-any.whl", hash = "sha256:44e7abd8d8e4575e6cdbb11497e1768a669a1bd2ba35df4016b44f196e44cc31"},
-    {file = "winipedia_utils-0.7.25.tar.gz", hash = "sha256:1158e8d0f003c9d307485d27915b367d2dac6fe071ea8e14cd2eee96c2c0f458"},
+    {file = "winipedia_utils-0.7.26-py3-none-any.whl", hash = "sha256:601b3b495155de64411b5812c8ad37e7470b4cd990454ae4bf680c97cde8e510"},
+    {file = "winipedia_utils-0.7.26.tar.gz", hash = "sha256:658e9f7e45ad275a9157e7fc02d4b1a1d55653bf2e6ce8df30ebc50492ba3db4"},
 ]
 
 [package.dependencies]
@@ -2039,6 +2039,7 @@ mypy = "*"
 networkx = "*"
 packaging = "*"
 pathspec = "*"
+pillow = "*"
 polars = "*"
 pre-commit = "*"
 pygithub = "*"
