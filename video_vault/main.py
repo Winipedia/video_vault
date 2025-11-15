@@ -27,7 +27,3 @@ def main() -> None:
     # Start the event loop (keeps the app running)
     # This will block until the user closes the window
     app.exec()
-
-
-if __name__ == "__main__":
-    main()
