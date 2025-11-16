@@ -3,6 +3,7 @@
 This module contains the main function to run the application.
 """
 
+import os
 import sys
 
 from PySide6.QtWidgets import QApplication
@@ -26,4 +27,7 @@ def main() -> None:
     window.showMaximized()
     # Start the event loop (keeps the app running)
     # This will block until the user closes the window
+    # if pytest is running exit with 0
+    if "PYTEST_CURRENT_TEST" in os.environ:
+        sys.exit(0)
     app.exec()
