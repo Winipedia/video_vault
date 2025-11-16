@@ -676,6 +676,18 @@ test = ["pyfakefs", "pytest (>=6,!=8.1.*)"]
 type = ["pygobject-stubs", "pytest-mypy", "shtab", "types-pywin32"]
 
 [[package]]
+name = "logdecorator"
+version = "2.5"
+description = "Move logging code out of your business logic with decorators"
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "logdecorator-2.5-py3-none-any.whl", hash = "sha256:c893e00866ddb92163e063945412bfadc41207ff1610ef9045df126a00a5c84d"},
+    {file = "logdecorator-2.5.tar.gz", hash = "sha256:aa3486b586efa932c56da0b2bfd73d1a93946887220315500bc8e49c55bb864a"},
+]
+
+[[package]]
 name = "macholib"
 version = "1.16.3"
 description = "Mach-O header analysis and editing"
@@ -2019,14 +2031,14 @@ winipedia-utils = "*"
 
 [[package]]
 name = "winipedia-utils"
-version = "0.7.28"
+version = "0.7.29"
 description = "A package with many utility functions"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_utils-0.7.28-py3-none-any.whl", hash = "sha256:655c32c74f5f23691a0b131b18ba614a489d2e259e9fc65b165fd31779d9db88"},
-    {file = "winipedia_utils-0.7.28.tar.gz", hash = "sha256:a6ca677754fb82395adecc28e9d66e25c3811fe65b9d0c08058de1cd866573d6"},
+    {file = "winipedia_utils-0.7.29-py3-none-any.whl", hash = "sha256:bd14f802ac569facccf846701cb045995546b9b8ddfb20b272d864be5a962699"},
+    {file = "winipedia_utils-0.7.29.tar.gz", hash = "sha256:3758c23c1c6fc09f2605641d6ba2efe5e25564b2df73412c4f368f4ed5157e63"},
 ]
 
 [package.dependencies]
@@ -2035,6 +2047,7 @@ cryptography = "*"
 defusedxml = "*"
 dotenv = "*"
 keyring = "*"
+logdecorator = "*"
 mypy = "*"
 networkx = "*"
 packaging = "*"
