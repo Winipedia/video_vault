@@ -40,7 +40,6 @@ pyinstaller = {version = "*", python = "<3.15"}
 [tool.poetry.dependencies]
 yt-dlp = "*"
 pyside6 = "*"
-keyring = "*"
 winipedia-pyside = "*"
 platformdirs = "*"
 winipedia-django = "*"
