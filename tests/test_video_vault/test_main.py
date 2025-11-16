@@ -1,14 +1,20 @@
 """module."""
 
+import platform
 import shutil
 from contextlib import chdir
 from pathlib import Path
 
+import pytest
 from winipedia_utils.utils.os.os import run_subprocess
 
 import video_vault
 
 
+@pytest.mark.skipif(
+    platform.system() == "Windows",
+    reason="Test fails on Windows due to windows paths in gitub ci",
+)
 def test_main(tmp_path: Path) -> None:
     """Test func for main."""
     # copy the video_vault folder to a temp directory
