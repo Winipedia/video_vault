@@ -2019,14 +2019,14 @@ winipedia-utils = "*"
 
 [[package]]
 name = "winipedia-utils"
-version = "0.7.30"
+version = "0.7.32"
 description = "A package with many utility functions"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winipedia_utils-0.7.30-py3-none-any.whl", hash = "sha256:0c77c0966f9ceb04c37a095dbe2644fd25b2ea688ef833494ae401da5292ca79"},
-    {file = "winipedia_utils-0.7.30.tar.gz", hash = "sha256:04529e44dbba670e242e14447997faaca2c0a6c42a0efb4283e990d36b694b96"},
+    {file = "winipedia_utils-0.7.32-py3-none-any.whl", hash = "sha256:ea19a70bad7ff73da1536866d9d9ad402235392ed398ca2004dab107b3322a21"},
+    {file = "winipedia_utils-0.7.32.tar.gz", hash = "sha256:978860c84649e78e483080596ea8729a65b2910df87fd3a5526c88c1682285c9"},
 ]
 
 [package.dependencies]

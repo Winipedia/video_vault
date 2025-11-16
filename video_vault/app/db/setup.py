@@ -12,17 +12,27 @@ import django
 from django.conf import settings
 from django.core.management import call_command
 from platformdirs import user_data_dir
+from winipedia_utils.utils.logging.logger import get_logger
 from winipedia_utils.utils.modules.module import make_obj_importpath
 
 from video_vault.app import db
 from video_vault.app.core.consts import APP_NAME, AUTHOR
 from video_vault.app.core.security import get_app_key_as_str
 
+logger = get_logger(__name__)
+
 
 def setup_django() -> None:
     """Setup the database."""
     if settings.configured:
         return
+
+    # can be None in frozen apps and django needs it to be writable
+    if sys.stdout is None:
+        sys.stdout = StringIO()
+    if sys.stderr is None:
+        sys.stderr = StringIO()
+
     root_dir = Path(user_data_dir(APP_NAME, AUTHOR, ensure_exists=True))
     media_root = root_dir / "media"
     media_root.mkdir(parents=True, exist_ok=True)
@@ -47,9 +57,6 @@ def setup_django() -> None:
 
     django.setup()
 
-    if sys.stdout is None:
-        sys.stdout = StringIO()
-    if sys.stderr is None:
-        sys.stderr = StringIO()
-
     call_command("migrate")
+
+    logger.info("Django setup complete")
