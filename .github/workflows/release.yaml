@@ -63,9 +63,11 @@ jobs:
       id: install_pyside_system_dependencies
       run: sudo apt-get update && sudo apt-get install -y libegl1 libpulse0
       if: runner.os == 'Linux'
+      env:
+        REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
     - name: Protect Repository
       id: protect_repository
-      run: poetry run python -m winipedia_utils.dev.git.github.repo.protect
+      run: poetry run winipedia-utils protect-repo
       env:
         REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
     - name: Run Pre Commit Hooks
