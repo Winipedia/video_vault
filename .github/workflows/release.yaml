@@ -99,7 +99,6 @@ jobs:
     steps:
     - name: Checkout Repository
       id: checkout_repository
-      run: echo 'No non-abstract builders defined. Skipping build.'
       uses: actions/checkout@main
     - name: Setup Python
       id: setup_python
