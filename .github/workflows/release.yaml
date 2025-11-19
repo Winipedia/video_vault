@@ -55,19 +55,15 @@ jobs:
     - name: Add Dependency Updates To Git
       id: add_dependency_updates_to_git
       run: git add pyproject.toml poetry.lock
-    - name: Setup Keyring
-      id: setup_keyring
-      run: poetry run pip install keyrings.alt && poetry run python -c "import keyring;
-        from keyrings.alt.file import PlaintextKeyring; keyring.set_keyring(PlaintextKeyring());"
     - name: Install Pyside System Dependencies
       id: install_pyside_system_dependencies
       run: sudo apt-get update && sudo apt-get install -y libegl1 libpulse0
-      if: runner.os == 'Linux'
       env:
         REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
+      if: runner.os == 'Linux'
     - name: Protect Repository
       id: protect_repository
-      run: poetry run winipedia-utils protect-repo
+      run: poetry run pyrig protect-repo
       env:
         REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
     - name: Run Pre Commit Hooks
@@ -103,6 +99,7 @@ jobs:
     steps:
     - name: Checkout Repository
       id: checkout_repository
+      run: echo 'No non-abstract builders defined. Skipping build.'
       uses: actions/checkout@main
     - name: Setup Python
       id: setup_python
@@ -125,23 +122,23 @@ jobs:
     - name: Add Dependency Updates To Git
       id: add_dependency_updates_to_git
       run: git add pyproject.toml poetry.lock
-    - name: Setup Keyring
-      id: setup_keyring
-      run: poetry run pip install keyrings.alt && poetry run python -c "import keyring;
-        from keyrings.alt.file import PlaintextKeyring; keyring.set_keyring(PlaintextKeyring());"
     - name: Install Pyside System Dependencies
       id: install_pyside_system_dependencies
       run: sudo apt-get update && sudo apt-get install -y libegl1 libpulse0
       if: runner.os == 'Linux'
     - name: Build Artifacts
       id: build_artifacts
-      run: poetry run winipedia-utils build
+      uses: actions/upload-artifact@main
+      with:
+        name: video_vault-${{ runner.os }}
+        path: dist
+      run: poetry run pyrig build
     - name: Upload Artifacts
       id: upload_artifacts
       uses: actions/upload-artifact@main
       with:
         name: video_vault-${{ runner.os }}
-        path: artifacts
+        path: dist
   release:
     needs:
     - build
@@ -160,6 +157,10 @@ jobs:
     - name: Setup Poetry
       id: setup_poetry
       uses: snok/install-poetry@main
+    - name: Add Poetry To Windows Path
+      id: add_poetry_to_windows_path
+      run: echo 'C:/Users/runneradmin/.local/bin' >> $GITHUB_PATH
+      if: ${{ runner.os }} == 'Windows'
     - name: Install Python Dependencies
       id: install_python_dependencies
       run: poetry install --with dev
@@ -173,10 +174,6 @@ jobs:
     - name: Add Dependency Updates To Git
       id: add_dependency_updates_to_git
       run: git add pyproject.toml poetry.lock
-    - name: Setup Keyring
-      id: setup_keyring
-      run: poetry run pip install keyrings.alt && poetry run python -c "import keyring;
-        from keyrings.alt.file import PlaintextKeyring; keyring.set_keyring(PlaintextKeyring());"
     - name: Setup Git
       id: setup_git
       run: git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -204,7 +201,7 @@ jobs:
       id: download_artifacts
       uses: actions/download-artifact@main
       with:
-        path: artifacts
+        path: dist
         merge-multiple: 'true'
     - name: Build Changelog
       id: build_changelog
@@ -219,4 +216,4 @@ jobs:
         name: ${{ github.event.repository.name }} ${{ steps.extract_version.outputs.version
           }}
         body: ${{ steps.build_changelog.outputs.changelog }}
-        artifacts: artifacts/*
+        artifacts: dist/*

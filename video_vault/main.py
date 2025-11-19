@@ -1,22 +1,24 @@
-"""The main module.
+"""Main entrypoint for the project."""
 
-This module contains the main function to run the application.
-"""
-
+import logging
 import os
 import sys
 
 from PySide6.QtWidgets import QApplication
-from winipedia_utils.utils.logging.logger import get_logger
 
-from video_vault.app.db.setup import setup_django
-from video_vault.app.ui.stylesheet import STYLESHEET
-from video_vault.app.ui.windows.main import VideoVault as VideoVaultWindow
+from video_vault.src.db.setup import setup_django
+from video_vault.src.ui.stylesheet import STYLESHEET
+from video_vault.src.ui.windows.main import VideoVault as VideoVaultWindow
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 def main() -> None:
+    """Main entrypoint for the project."""
+    run()
+
+
+def run() -> None:
     """Main function to run the application."""
     setup_django()
     # Create QApplication - this manages the entire app

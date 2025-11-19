@@ -1,4 +1,4 @@
-"""module."""
+"""test module."""
 
 import platform
 import shutil
@@ -6,16 +6,26 @@ from contextlib import chdir
 from pathlib import Path
 
 import pytest
-from winipedia_utils.utils.os.os import run_subprocess
+from pyrig.dev.configs.pyproject import PyprojectConfigFile
+from pyrig.src.os.os import run_subprocess
 
 import video_vault
+
+
+def test_main() -> None:
+    """Test func for main."""
+    project_name = PyprojectConfigFile.get_project_name()
+    stdout = run_subprocess(["poetry", "run", project_name, "--help"]).stdout.decode(
+        "utf-8"
+    )
+    assert project_name in stdout
 
 
 @pytest.mark.skipif(
     platform.system() == "Windows",
     reason="Test fails on Windows due to windows paths in gitub ci",
 )
-def test_main(tmp_path: Path) -> None:
+def test_main_runs_without_configs(tmp_path: Path) -> None:
     """Test func for main."""
     # copy the video_vault folder to a temp directory
     # run main.py from that directory
