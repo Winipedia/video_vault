@@ -25,14 +25,14 @@ def test_main() -> None:
     platform.system() == "Windows",
     reason="Test fails on Windows due to windows paths in gitub ci",
 )
-def test_main_runs_without_configs(tmp_path: Path) -> None:
+def test_run(tmp_path: Path) -> None:
     """Test func for main."""
     # copy the video_vault folder to a temp directory
     # run main.py from that directory
 
     video_vault_path = Path(video_vault.__file__).parent
 
-    temp_video_vault_path = tmp_path / "video_vault"
+    temp_video_vault_path = tmp_path / video_vault.__name__
 
     # shutil video_vault_path to tmp_path
     shutil.copytree(video_vault_path, temp_video_vault_path)
