@@ -127,10 +127,6 @@ jobs:
       if: runner.os == 'Linux'
     - name: Build Artifacts
       id: build_artifacts
-      uses: actions/upload-artifact@main
-      with:
-        name: video_vault-${{ runner.os }}
-        path: dist
       run: poetry run pyrig build
     - name: Upload Artifacts
       id: upload_artifacts
