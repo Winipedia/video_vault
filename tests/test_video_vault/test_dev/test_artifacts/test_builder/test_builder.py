@@ -1,8 +1,12 @@
 """module."""
 
+from video_vault.dev.artifacts.builder.builder import VideoVaultBuilder
+from video_vault.src.db import migrations
+
 
 class TestVideoVaultBuilder:
-    """Test class for VideoVaultBuilder."""
+    """Test class."""
 
-    def test_get_add_datas(self) -> None:
-        """Test method for get_add_datas."""
+    def test_get_additional_resource_pkgs(self) -> None:
+        """Test method."""
+        assert VideoVaultBuilder.get_additional_resource_pkgs() == [migrations]
