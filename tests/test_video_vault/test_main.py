@@ -1,5 +1,6 @@
 """test module."""
 
+import os
 import platform
 import shutil
 from contextlib import chdir
@@ -43,6 +44,8 @@ def test_run(tmp_path: Path) -> None:
     # copy readme.md to tmp_path
     shutil.copy("README.md", temp_video_vault_path.parent)
 
+    env = os.environ.copy()
+
     with chdir(tmp_path):
         # poetry install
         run_subprocess(["poetry", "install"])
@@ -58,4 +61,5 @@ def test_run(tmp_path: Path) -> None:
         Path("poetry.lock").unlink()
         Path("README.md").unlink()
         # python -m video_vault.main
-        run_subprocess([python_path, "-m", "video_vault.main"])
+
+        run_subprocess([python_path, "-m", "video_vault.main"], env=env)
