@@ -137,16 +137,14 @@ class TestDownloadWorker:
         test_url = "https://www.youtube.com/watch?v=805SIqgDZIE"
         cookies: list[Cookie] = []
 
-        # Mock only the methods, not Qt initialization
-        mock_show_notification = mocker.patch.object(
-            DownloadWorker, "show_notification"
-        )
-        mock_update_downloads_page = mocker.patch.object(
-            DownloadWorker, "update_downloads_page"
-        )
-
         worker = DownloadWorker(test_url, cookies)
         initial_worker_count = len(DownloadWorker.ALL_WORKERS)
+
+        # Mock the methods after worker creation
+        mock_show_notification = mocker.patch.object(worker, "show_notification")
+        mock_update_downloads_page = mocker.patch.object(
+            worker, "update_downloads_page"
+        )
 
         worker.on_finished()
 
