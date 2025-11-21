@@ -29,12 +29,15 @@ def run() -> None:
 
     # Create and show the main window
     window = VideoVaultWindow()
+
+    # if pytest is running exit with 0 before creating the window
+    # to avoid segfaults in headless environments
+    if "PYTEST_CURRENT_TEST" in os.environ:
+        return
+
     window.showMaximized()
     # Start the event loop (keeps the app running)
     # This will block until the user closes the window
-    # if pytest is running exit with 0
-    if "PYTEST_CURRENT_TEST" in os.environ:
-        return
     logger.info("Starting event loop")
     app.exec()
 
