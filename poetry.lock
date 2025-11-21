@@ -1367,14 +1367,14 @@ QtPy = ">=2.4.1"
 
 [[package]]
 name = "pyrig"
-version = "1.1.26"
+version = "1.1.29"
 description = "A dev kit that standardizes configurations and testing"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "pyrig-1.1.26-py3-none-any.whl", hash = "sha256:61d6c0c8f415217b8acdf880887b44dc9cffa883499c64ae5d6466f01fe95aea"},
-    {file = "pyrig-1.1.26.tar.gz", hash = "sha256:e6cbd0c1ce968641a815d25cce8966267cd94686fcad0b33637adfb4b5bd791b"},
+    {file = "pyrig-1.1.29-py3-none-any.whl", hash = "sha256:187c0ae5cfac215173e3dc0f98bb7c33829a799358eb01cdc32a106ebe562b5c"},
+    {file = "pyrig-1.1.29.tar.gz", hash = "sha256:2c691495dfb5944ba1345d53073bfd20f6791fef185c72769b5751beb92d23ce"},
 ]
 
 [package.dependencies]
@@ -2010,14 +2010,14 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 
 [[package]]
 name = "winidjango"
-version = "1.0.6"
+version = "1.0.8"
 description = "A utils package for django"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winidjango-1.0.6-py3-none-any.whl", hash = "sha256:0cd59ad8547ab7f22a357db33f066bb3add9c27c69d7cefad3e3187c69062158"},
-    {file = "winidjango-1.0.6.tar.gz", hash = "sha256:ff18a03cf55a72589b7c22042f84fde619732a0f1f44b2696c2e1cc27d23c8a6"},
+    {file = "winidjango-1.0.8-py3-none-any.whl", hash = "sha256:c5fb26cdc871dca390fb3c4e945c510ebb8743f2c926acde0c50b87bb613ccf1"},
+    {file = "winidjango-1.0.8.tar.gz", hash = "sha256:af88c611411ebcadc40e84cbc2eb2289014e22fe41aa48cb058694ba17172120"},
 ]
 
 [package.dependencies]
@@ -2027,14 +2027,14 @@ winiutils = "*"
 
 [[package]]
 name = "winipyside"
-version = "1.0.6"
+version = "1.0.8"
 description = "A package for pyside utils"
 optional = false
 python-versions = "<3.14,>=3.12"
 groups = ["main"]
 files = [
-    {file = "winipyside-1.0.6-py3-none-any.whl", hash = "sha256:cd892b38d8e49047d03d576fdaf80296579c9338931663934a5435a74d89a223"},
-    {file = "winipyside-1.0.6.tar.gz", hash = "sha256:e4547c07a0fe92f9afa5c1fe030156ded14a5750b9dcd937080ce0e4711d6c78"},
+    {file = "winipyside-1.0.8-py3-none-any.whl", hash = "sha256:c12e81547ac1eb282bb4db173b06de8ff66c6487dd2ab9a66ca7bfa70a2aa90a"},
+    {file = "winipyside-1.0.8.tar.gz", hash = "sha256:0be9fb77c56859c150adbd11781456699ec379346eda2faf3ac60c915669b5f9"},
 ]
 
 [package.dependencies]
@@ -2044,14 +2044,14 @@ winiutils = "*"
 
 [[package]]
 name = "winiutils"
-version = "1.1.5"
+version = "1.1.7"
 description = "A package with many utility functions"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "winiutils-1.1.5-py3-none-any.whl", hash = "sha256:27470039f82efd2a8374ec94fb44bd4c4f5ab88deb6be02aadec295657195903"},
-    {file = "winiutils-1.1.5.tar.gz", hash = "sha256:b1980844299d1fbcd682125e58b856653426262a53365522057695cb6b02bf31"},
+    {file = "winiutils-1.1.7-py3-none-any.whl", hash = "sha256:6a9f1eca088941f1cc6495a6b53685b2c588e30b74504f888f52056af6f2b06e"},
+    {file = "winiutils-1.1.7.tar.gz", hash = "sha256:ec11cac40f9a8fc16e901434d48b194798f44cc010e38d47710dbea41acde18f"},
 ]
 
 [package.dependencies]
