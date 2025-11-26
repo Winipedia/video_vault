@@ -4,6 +4,7 @@ import tempfile
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+import pytest
 from pyrig.src.modules.module import make_obj_importpath
 from pyrig.src.testing.assertions import assert_with_msg
 from pytest_mock import MockerFixture
@@ -21,6 +22,7 @@ if TYPE_CHECKING:
     from http.cookiejar import Cookie
 
 
+@pytest.mark.django_db
 def test_add_download(mocker: MockerFixture, tmp_path: Path) -> None:
     """Test func for add_download."""
     test_url = "https://www.youtube.com/watch?v=805SIqgDZIE"
@@ -79,6 +81,7 @@ def test_do_download(mocker: MockerFixture, tmp_path: Path) -> None:
         mock_ydl_instance.prepare_filename.assert_called_once()
 
 
+@pytest.mark.django_db
 def test_save_download(tmp_path: Path) -> None:
     """Test func for save_download."""
     # Create a test file

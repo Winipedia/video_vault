@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+import pytest
 from pyrig.src.testing.assertions import assert_with_msg
 
 from video_vault.src.db.models import File
@@ -10,6 +11,7 @@ from video_vault.src.db.models import File
 class TestFile:
     """Test class for File."""
 
+    @pytest.mark.django_db
     def test_delete_file(self, tmp_path: Path) -> None:
         """Test method for delete_file."""
         # Create a test file
@@ -41,6 +43,7 @@ class TestFile:
         )
         assert_with_msg(result[0] == 1, "Should delete exactly one record")
 
+    @pytest.mark.django_db
     def test_create_encrypted(self, tmp_path: Path) -> None:
         """Test method for create_encrypted."""
         # Create a test file
@@ -67,6 +70,7 @@ class TestFile:
             encrypted_content != test_content, "File content should be encrypted"
         )
 
+    @pytest.mark.django_db
     def test_display_name(self, tmp_path: Path) -> None:
         """Test method for display_name."""
         # Create a test file with extension

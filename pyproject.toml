@@ -36,16 +36,14 @@ pytest-qt = "*"
 pytest = "*"
 types-networkx = "*"
 pyinstaller = {version = "*", python = "<3.15"}
+pytest-django = "*"
 
 [tool.poetry.dependencies]
 yt-dlp = "*"
-pyside6 = "*"
-platformdirs = "*"
 imageio-ffmpeg = "*"
-pyqt-toast-notification = "*"
-cryptography = "*"
 winidjango = "*"
 winipyside = "*"
+
 [tool.ruff]
 exclude = [".*", "**/migrations/*.py"]
 
