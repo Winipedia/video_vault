@@ -3,10 +3,15 @@
 All subclasses of ConfigFile in the configs package are automatically called.
 """
 
-from pyrig.dev.configs.pyproject import PyprojectConfigFile as PyrigPyprojectConfigFile
+from winidjango.dev.configs.configs import (
+    PyprojectConfigFile as WiniDjangoPyprojectConfigFile,
+)
+from winipyside.dev.configs.configs import (
+    PyprojectConfigFile as WiniPySidePyprojectConfigFile,
+)
 
 
-class PyprojectConfigFile(PyrigPyprojectConfigFile):
+class PyprojectConfigFile(WiniDjangoPyprojectConfigFile, WiniPySidePyprojectConfigFile):
     """Config file for pyproject.toml."""
 
     @classmethod
