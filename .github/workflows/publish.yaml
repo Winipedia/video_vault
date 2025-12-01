@@ -1,8 +1,34 @@
+name: Publish Workflow
 'on':
   workflow_dispatch: {}
+  workflow_run:
+    workflows:
+    - Release Workflow
+    types:
+    - completed
+permissions: {}
+run-name: Publish Workflow
+defaults:
+  run:
+    shell: bash
+env:
+  PYTHONDONTWRITEBYTECODE: 1
 jobs:
-  empty:
+  publish:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-    - name: Empty Step
-      run: echo 'Empty Step'
+    - name: Checkout Repository
+      id: checkout_repository
+      uses: actions/checkout@main
+    - name: Setup Project Mgt
+      id: setup_project_mgt
+      uses: astral-sh/setup-uv@main
+      with:
+        python-version: '3.13'
+    - name: Build Wheel
+      id: build_wheel
+      run: uv build
+    - name: Publish To Pypi
+      id: publish_to_pypi
+      run: uv publish --token ${{ secrets.PYPI_TOKEN }}

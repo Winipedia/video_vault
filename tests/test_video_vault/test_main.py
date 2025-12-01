@@ -16,7 +16,7 @@ import video_vault
 def test_main() -> None:
     """Test func for main."""
     project_name = PyprojectConfigFile.get_project_name()
-    stdout = run_subprocess(["poetry", "run", project_name, "--help"]).stdout.decode(
+    stdout = run_subprocess(["uv", "run", project_name, "--help"]).stdout.decode(
         "utf-8"
     )
     assert project_name in stdout
@@ -38,28 +38,22 @@ def test_run(tmp_path: Path) -> None:
     # shutil video_vault_path to tmp_path
     shutil.copytree(video_vault_path, temp_video_vault_path)
 
-    # copy pyproject.toml and poetry.lock to tmp_path
+    # copy pyproject.toml and uv.lock to tmp_path
     shutil.copy("pyproject.toml", temp_video_vault_path.parent)
-    shutil.copy("poetry.lock", temp_video_vault_path.parent)
+    shutil.copy("uv.lock", temp_video_vault_path.parent)
     # copy readme.md to tmp_path
     shutil.copy("README.md", temp_video_vault_path.parent)
 
     env = os.environ.copy()
 
     with chdir(tmp_path):
-        # poetry install
-        run_subprocess(["poetry", "install"])
-        # gte path to python venv
-        python_path = (
-            run_subprocess(["poetry", "run", "which", "python"])
-            .stdout.decode("utf-8")
-            .strip()
-        )
+        # install deps
+        run_subprocess(["uv", "sync", "--no-dev"])
 
-        # delete pyproject.toml and poetry.lock and readme.md
+        # delete pyproject.toml and uv.lock and readme.md
         Path("pyproject.toml").unlink()
-        Path("poetry.lock").unlink()
+        Path("uv.lock").unlink()
         Path("README.md").unlink()
         # python -m video_vault.main
 
-        run_subprocess([python_path, "-m", "video_vault.main"], env=env)
+        run_subprocess(["uv", "run", "-m", "video_vault.main"], env=env)
