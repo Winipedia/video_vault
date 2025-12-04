@@ -1,6 +1,6 @@
 """module."""
 
-from video_vault.dev.artifacts.builder.builder import VideoVaultBuilder
+from video_vault.dev.artifacts.builders.builder import VideoVaultBuilder
 from video_vault.src.db import migrations
 
 
