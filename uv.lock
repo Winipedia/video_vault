@@ -760,7 +760,7 @@ wheels = [
 
 [[package]]
 name = "pyrig"
-version = "2.0.32"
+version = "2.0.33"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "dotenv" },
@@ -773,9 +773,9 @@ dependencies = [
     { name = "tomlkit" },
     { name = "typer" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1f/d0/a51a8a4baf8fe9489f824f68224875ae923410f9ca2b73b431a902192d20/pyrig-2.0.32.tar.gz", hash = "sha256:3980cb87c7243aa70c5774a8d6a0e4df7eeadf4644c01427ccfd8dbb6a071d37", size = 68803, upload-time = "2025-12-04T16:19:56.411Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4a/9b/a765888a670714c8b7d5ebf982d99aff487b36970c9e34e4e30104c25a15/pyrig-2.0.33.tar.gz", hash = "sha256:ac47c91275bfc2af2fa0fb9bf33d15a5866e15e913a1e1de1ebcc1ec4474758b", size = 68714, upload-time = "2025-12-04T16:45:46.786Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/98/1a/f29a58358548d51b684b74c861f33033eb56d34f52228f33c93d82624dba/pyrig-2.0.32-py3-none-any.whl", hash = "sha256:5573ea2d92738c0ecf0ab7f68c6ba992e910a542d32e82a15b2aa33708cc0ff5", size = 94117, upload-time = "2025-12-04T16:19:57.522Z" },
+    { url = "https://files.pythonhosted.org/packages/7c/4e/66fd1965d02d3b8e041bcc6dd277a5c30f27d5223a6a3469a6a64b5dec68/pyrig-2.0.33-py3-none-any.whl", hash = "sha256:c5ce0a546586bc8081cd630b3c3eb1d550fa62258022d37318d418cd544b0ff6", size = 93980, upload-time = "2025-12-04T16:45:45.386Z" },
 ]
 
 [[package]]
@@ -1178,7 +1178,7 @@ wheels = [
 
 [[package]]
 name = "video-vault"
-version = "0.5.4"
+version = "0.5.5"
 source = { editable = "." }
 dependencies = [
     { name = "imageio-ffmpeg" },
