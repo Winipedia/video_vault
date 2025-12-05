@@ -3,7 +3,7 @@ name = "video-vault"
 version = "0.5.8"
 description = "An application to download any video"
 authors = [
-    {name = "Winipedia", email = "win.steveker@gmx.de"},
+    {name = "Winipedia"},
 ]
 readme = "README.md"
 requires-python = ">=3.12,<3.14"
