@@ -25,6 +25,7 @@ dev = [
     "pre-commit",
     "pyinstaller",
     "pytest",
+    "pytest-cov",
     "pytest-django",
     "pytest-mock",
     "pytest-qt",
@@ -85,6 +86,7 @@ files = "."
 testpaths = [
     "tests",
 ]
+addopts = "--cov=video_vault --cov-report=term-missing --cov-fail-under=80"
 
 [tool.bandit]
 exclude_dirs = [
