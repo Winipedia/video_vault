@@ -1329,16 +1329,16 @@ wheels = [
 
 [[package]]
 name = "winipyside"
-version = "2.1.23"
+version = "2.1.24"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pyqt-toast-notification" },
     { name = "pyside6" },
     { name = "winiutils" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fe/8a/6235e6b95dd326a241ad5729c757605f1c8a7ec4502f11a583c6dd8d9372/winipyside-2.1.23.tar.gz", hash = "sha256:2c6ba8b069a328042b5f5a64a8ac0e00e3e9eff7c7e9e3b6c6d1a77aefd0d4d9", size = 27443, upload-time = "2025-12-10T03:20:52.114Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b2/af/4e1c8f4fbbdf52445284a91b6dbf45841dca4568b48bedd330101d3f9393/winipyside-2.1.24.tar.gz", hash = "sha256:7246fc36e7b257819f832554f84b3b3005684261424a4fa4a35485c2d2ce87e4", size = 27408, upload-time = "2025-12-10T21:35:06.899Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/70/a1/cb00b8b46284d633b64668761119c72a01eeb9725cf917adf2403578e815/winipyside-2.1.23-py3-none-any.whl", hash = "sha256:c986c81871c5c1607a0f21ef399624c99607943d890be19e4afe53bd3edc0e25", size = 40895, upload-time = "2025-12-10T03:20:51.377Z" },
+    { url = "https://files.pythonhosted.org/packages/aa/c3/998f6834a991e698ea77ae74dd05623b07a5e68e5aeb6046b78999a72270/winipyside-2.1.24-py3-none-any.whl", hash = "sha256:d7342cc3689dce50a0b8149b69f86a26e515f7fd5658ff7c305c8d95a2a96c26", size = 40265, upload-time = "2025-12-10T21:35:06.063Z" },
 ]
 
 [[package]]
