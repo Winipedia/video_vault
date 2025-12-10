@@ -5,7 +5,7 @@ All subclasses of Builder in the builds package are automatically called.
 
 from types import ModuleType
 
-from pyrig.dev.artifacts.builders.pyinstaller import PyInstallerBuilder
+from pyrig.dev.builders.pyinstaller import PyInstallerBuilder
 
 from video_vault.src.db import migrations
 
