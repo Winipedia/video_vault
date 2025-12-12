@@ -33,22 +33,24 @@ def test_run(tmp_path: Path) -> None:
     # shutil video_vault_path to tmp_path
     shutil.copytree(video_vault_path, temp_video_vault_path)
 
-    # copy pyproject.toml and uv.lock to tmp_path
-    shutil.copy("pyproject.toml", temp_video_vault_path.parent)
-    shutil.copy("uv.lock", temp_video_vault_path.parent)
-    # copy readme.md to tmp_path
-    shutil.copy("README.md", temp_video_vault_path.parent)
+    files = [
+        "pyproject.toml",
+        "uv.lock",
+        "README.md",
+        "LICENSE",
+    ]
+
+    for file in files:
+        shutil.copy(file, temp_video_vault_path.parent)
 
     env = os.environ.copy()
-
     with chdir(tmp_path):
         # install deps
         run_subprocess(["uv", "sync", "--no-dev"])
 
         # delete pyproject.toml and uv.lock and readme.md
-        Path("pyproject.toml").unlink()
-        Path("uv.lock").unlink()
-        Path("README.md").unlink()
+        for file in files:
+            Path(file).unlink()
         # python -m video_vault.main
 
         run_subprocess(["uv", "run", "-m", "video_vault.main"], env=env)

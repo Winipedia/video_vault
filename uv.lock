@@ -1352,30 +1352,30 @@ wheels = [
 
 [[package]]
 name = "winidjango"
-version = "2.0.27"
+version = "2.0.28"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
     { name = "django-stubs-ext" },
     { name = "winiutils" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c7/97/a33914b8fe7cb9043718f4dbb7d37f2b7c6a352f1539f69270afe60155ad/winidjango-2.0.27.tar.gz", hash = "sha256:bef7cf23e6ba271e970d1cd4461634a0bb4b7cb1811d1511b3f144bc76ab5564", size = 16599, upload-time = "2025-12-12T05:22:14.993Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b0/ac/d17f977b10f01eeae78aa345b0a39ab9d4f0f25d2edf6fd1be04e2a68076/winidjango-2.0.28.tar.gz", hash = "sha256:e0f593a5b12a5bc2875f114aecf392f42d35f4bc1f087cff016d77c5eba969f5", size = 17304, upload-time = "2025-12-12T20:47:19.116Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/11/9c/f42f0ae45dc632a29fc70995ecac590e5a8f80afb44856061df8e73360b2/winidjango-2.0.27-py3-none-any.whl", hash = "sha256:f5a7dcbb6f7fc19f27c7ee8670ea1f7353376b0165f516637e1b99f9b62e9bcd", size = 23863, upload-time = "2025-12-12T05:22:16.097Z" },
+    { url = "https://files.pythonhosted.org/packages/2c/d2/107eb0bed7655f8115a96cd7db31c508c5be12b31aa8946b9cc53a163be9/winidjango-2.0.28-py3-none-any.whl", hash = "sha256:746fea3bd954426cfa95ae9cac44cd630728486ce2d3ab8a6593580729fd6584", size = 24878, upload-time = "2025-12-12T20:47:17.997Z" },
 ]
 
 [[package]]
 name = "winipyside"
-version = "2.1.28"
+version = "2.1.29"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pyqt-toast-notification" },
     { name = "pyside6" },
     { name = "winiutils" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/29/b9/57897c22e6fc07975aaf0b1c1fd25b6e9444a073f4bf95584d4cbf3173fb/winipyside-2.1.28.tar.gz", hash = "sha256:f514e045155040ec587dabfe84d122cacbe7b71a79c0fef115b2df9843f18672", size = 27761, upload-time = "2025-12-12T05:45:33.927Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/9e/cd/5049d19a62ad2936c2d8c7fbf0d3ea447fdf308e420fd58504587b8c1f4f/winipyside-2.1.29.tar.gz", hash = "sha256:b4feb86f04498aae1e8bb984d39b367aaa7e15ce8470ae719a8c0a8c84dd75bd", size = 28459, upload-time = "2025-12-12T20:48:18.81Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9f/78/ff65d66dd909da7bddd4e7426099de485a1e07e82ce2aec374e7c69c2e42/winipyside-2.1.28-py3-none-any.whl", hash = "sha256:d417e5a557187a5e1f78788f42f6cf7eebdb8b03c0f97ca78eb28076cccebe9b", size = 40605, upload-time = "2025-12-12T05:45:34.922Z" },
+    { url = "https://files.pythonhosted.org/packages/59/f2/a454898b17750c84360fe8b8c597982cebe61ee1a5906b585dc443ce1664/winipyside-2.1.29-py3-none-any.whl", hash = "sha256:6437333557081d9366c7a5e8df2ffbf2bd134ff9584f43646591b4b18c54d83a", size = 41619, upload-time = "2025-12-12T20:48:19.768Z" },
 ]
 
 [[package]]
