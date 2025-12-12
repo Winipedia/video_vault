@@ -13,6 +13,10 @@ dependencies = [
     "winipyside",
     "yt-dlp",
 ]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
 
 [project.scripts]
 video-vault = "pyrig.dev.cli.cli:main"
@@ -86,7 +90,7 @@ files = "."
 testpaths = [
     "tests",
 ]
-addopts = "--cov=video_vault --cov-report=term-missing --cov-fail-under=80"
+addopts = "--cov=video_vault --cov-report=term-missing --cov-fail-under=90"
 
 [tool.bandit]
 exclude_dirs = [

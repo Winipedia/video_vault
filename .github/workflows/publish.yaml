@@ -1,8 +1,23 @@
+name: Publish
 'on':
   workflow_dispatch: {}
+  workflow_run:
+    workflows:
+    - Release
+    types:
+    - completed
+permissions: {}
+run-name: Publish
+defaults:
+  run:
+    shell: bash
+env:
+  PYTHONDONTWRITEBYTECODE: 1
 jobs:
-  empty:
+  publish:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-    - name: Empty Step
-      run: echo 'Empty Step'
+    - name: Opt Out Of Workflow
+      id: opt_out_of_workflow
+      run: echo 'Opting out of Publish workflow.'
