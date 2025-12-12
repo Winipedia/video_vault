@@ -1240,7 +1240,7 @@ wheels = [
 
 [[package]]
 name = "video-vault"
-version = "0.5.17"
+version = "0.5.18"
 source = { editable = "." }
 dependencies = [
     { name = "imageio-ffmpeg" },
@@ -1329,16 +1329,16 @@ wheels = [
 
 [[package]]
 name = "winipyside"
-version = "2.1.25"
+version = "2.1.26"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pyqt-toast-notification" },
     { name = "pyside6" },
     { name = "winiutils" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/93/90/b8fd74bd1db77536b91810e10f8ab33bde787e5b2b7ab999ee7b28ad6456/winipyside-2.1.25.tar.gz", hash = "sha256:26ad1e4e01b37926f78652da71ef216c0e42931df3b080e5ff413a1a88d2eda6", size = 27401, upload-time = "2025-12-11T03:22:32.597Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7c/0c/e07e0d67aea329e04757e7a72bf144f21ba4143de021dd0a21d8d3713168/winipyside-2.1.26.tar.gz", hash = "sha256:aa24f75826b2cb1f3060f8d43f53bcc9eb4668b2a749f58d81194d3342b2d2ce", size = 27744, upload-time = "2025-12-12T02:14:06.531Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/3a/2e/9b372b22ac749bc54fa52a0d6efa26f4610792e2733730731f7c2ead0d79/winipyside-2.1.25-py3-none-any.whl", hash = "sha256:d68c1f3432541ab7009646c0609dabcd78ed30d7ed79cca40f0c8b68ac8b7960", size = 40265, upload-time = "2025-12-11T03:22:33.452Z" },
+    { url = "https://files.pythonhosted.org/packages/e6/32/162227838af052ccb60866aed2d4c307b3b53a887e12ffb461c9981359e2/winipyside-2.1.26-py3-none-any.whl", hash = "sha256:f40f2fc4e753c010546252f76fd71b39743ea22046b1721a3633d775e0bc526d", size = 40585, upload-time = "2025-12-12T02:14:07.26Z" },
 ]
 
 [[package]]
