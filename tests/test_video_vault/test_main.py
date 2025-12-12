@@ -26,7 +26,7 @@ def test_run(tmp_path: Path) -> None:
     # copy the video_vault folder to a temp directory
     # run main.py from that directory
 
-    video_vault_path = Path(video_vault.__file__).parent
+    video_vault_path = Path(video_vault.__path__[0])
 
     temp_video_vault_path = tmp_path / video_vault.__name__
 
