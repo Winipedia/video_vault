@@ -10,6 +10,7 @@ license = "MIT"
 requires-python = ">=3.12,<3.14"
 dependencies = [
     "imageio-ffmpeg",
+    "platformdirs",
     "winidjango",
     "winipyside",
     "yt-dlp",
@@ -29,15 +30,22 @@ video-vault = "pyrig.dev.cli.cli:main"
 dev = [
     "bandit",
     "django-stubs",
+    "dotenv",
     "mypy",
+    "pillow",
     "pre-commit",
+    "pygithub",
     "pyinstaller",
     "pytest",
     "pytest-cov",
     "pytest-django",
     "pytest-mock",
     "pytest-qt",
+    "pyyaml",
     "ruff",
+    "setuptools",
+    "tenacity",
+    "tomlkit",
     "ty",
     "types-defusedxml",
     "types-pyinstaller",
@@ -81,6 +89,9 @@ fixable = [
 "tests/**/*.py" = [
     "S101",
 ]
+"**/tests/**/*.py" = [
+    "S101",
+]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -104,5 +115,6 @@ exclude_dirs = [
 
 [tool.bandit.assert_used]
 skips = [
+    "*/tests/*.py",
     "*test_*.py",
 ]
