@@ -17,7 +17,7 @@ env:
   PYTHONDONTWRITEBYTECODE: 1
   UV_NO_SYNC: 1
 jobs:
-  build:
+  build_artifacts:
     strategy:
       matrix:
         os:
@@ -61,4 +61,31 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: video_vault-${{ runner.os }}
+        path: dist
+  build_container_image:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+    - name: Checkout Repository
+      id: checkout_repository
+      uses: actions/checkout@main
+    - name: Install Container Engine
+      id: install_container_engine
+      uses: redhat-actions/podman-install@main
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build Container Image
+      id: build_container_image
+      run: podman build -t video-vault .
+    - name: Make Dist Folder
+      id: make_dist_folder
+      run: mkdir -p dist
+    - name: Save Container Image
+      id: save_container_image
+      run: podman save -o dist/video-vault.tar video-vault
+    - name: Upload Artifacts
+      id: upload_artifacts
+      uses: actions/upload-artifact@main
+      with:
+        name: container-image
         path: dist
