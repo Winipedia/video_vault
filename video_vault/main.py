@@ -6,7 +6,6 @@ import sys
 
 from PySide6.QtWidgets import QApplication
 
-from video_vault.src.db.setup import setup_django
 from video_vault.src.ui.stylesheet import STYLESHEET
 from video_vault.src.ui.windows.main import VideoVault as VideoVaultWindow
 
@@ -20,7 +19,6 @@ def main() -> None:
 
 def run() -> None:
     """Main function to run the application."""
-    setup_django()
     # if pytest is running exit with 0 before creating the window
     # to avoid segfaults in headless environments
     if "PYTEST_CURRENT_TEST" in os.environ:
