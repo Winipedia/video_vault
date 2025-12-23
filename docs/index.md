@@ -13,7 +13,7 @@
 [![pytest](https://img.shields.io/badge/tested%20with-pytest-46a2f1.svg?logo=pytest)](https://pytest.org/)
 [![codecov](https://codecov.io/gh/Winipedia/video-vault/branch/main/graph/badge.svg)](https://codecov.io/gh/Winipedia/video-vault)
 <!-- package-info -->
-[![PyPI](https://img.shields.io/pypi/v/video-vault?logo=pypi&logoColor=white)](https://pypi.org/project/video-vault/)
+[![PyPI](https://img.shields.io/pypi/v/video-vault?logo=pypi&logoColor=white)](https://pypi.org/project/video-vault)
 [![Python](https://img.shields.io/badge/python-3.12|3.13-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/github/license/Winipedia/video-vault)](https://github.com/Winipedia/video-vault/blob/main/LICENSE)
 <!-- ci/cd -->
