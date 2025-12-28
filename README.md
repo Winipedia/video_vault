@@ -8,10 +8,11 @@
 [![MkDocs](https://img.shields.io/badge/MkDocs-Documentation-326CE5?logo=mkdocs&logoColor=white)](https://www.mkdocs.org/)
 <!-- code-quality -->
 [![ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)](https://github.com/astral-sh/ty)[![mypy](https://img.shields.io/badge/type%20checked-mypy-039dfc.svg)](https://mypy-lang.org/)
+[![ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)](https://github.com/astral-sh/ty)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![pytest](https://img.shields.io/badge/tested%20with-pytest-46a2f1.svg?logo=pytest)](https://pytest.org/)
 [![codecov](https://codecov.io/gh/Winipedia/video-vault/branch/main/graph/badge.svg)](https://codecov.io/gh/Winipedia/video-vault)
+[![rumdl](https://img.shields.io/badge/markdown-rumdl-darkgreen)](https://github.com/rvben/rumdl)
 <!-- package-info -->
 [![PyPI](https://img.shields.io/pypi/v/video-vault?logo=pypi&logoColor=white)](https://pypi.org/project/video-vault)
 [![Python](https://img.shields.io/badge/python-3.12|3.13-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
@@ -30,9 +31,11 @@
 
 ## Features
 
-- **Download videos** from any platform (YouTube, Vimeo, etc.) using an embedded browser
+- **Download videos**
+   from any platform (YouTube, Vimeo, etc.) using an embedded browser
 - **Encrypted storage** with AES-GCM encryption for all downloaded videos
-- **Built-in video player** with automatic position tracking and resume functionality
+- **Built-in video player**
+   with automatic position tracking and resume functionality
 - **Cross-platform** support (Windows, macOS, Linux)
 - **Dark theme** UI inspired by Netflix
 
@@ -57,7 +60,8 @@ video-vault
 
 ## Quick Start
 
-1. **Launch the application** - The Downloads page will open showing your video library
+1. **Launch the application**
+   - The Downloads page will open showing your video library
 2. **Download a video**:
    - Click the "+" button in the top-right corner
    - Navigate to any video URL in the embedded browser
@@ -77,7 +81,9 @@ For more detailed information, see the [documentation](docs/index.md):
 
 ## Security
 
-All downloaded videos are encrypted using AES-GCM encryption. Encryption keys are stored securely in your system's keyring:
+All downloaded videos are encrypted using AES-GCM encryption.
+Encryption keys are stored securely in your system's keyring:
+
 - **macOS**: Keychain
 - **Windows**: Credential Manager
 - **Linux**: Secret Service

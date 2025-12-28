@@ -1,6 +1,7 @@
 # Development Guide
 
-This guide covers how to set up a development environment and contribute to Video Vault.
+This guide covers how to set up a development environment
+and contribute to Video Vault.
 
 ## Development Setup
 
@@ -36,7 +37,7 @@ uv run python -m video_vault.main
 
 ## Project Structure
 
-```
+```text
 video-vault/
 ├── video_vault/           # Main package
 │   ├── main.py           # Application entry point
@@ -198,7 +199,7 @@ uv run pre-commit run --all-files
 
 Use conventional commit format:
 
-```
+```text
 feat: add new feature
 fix: fix bug
 docs: update documentation
@@ -247,5 +248,5 @@ rm -rf ~/.local/share/VideoVault/db/
 
 ### Import Errors
 
-Ensure you're running commands with `uv run` to use the correct virtual environment.
-
+Ensure you're running commands with `uv run`
+to use the correct virtual environment.

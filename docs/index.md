@@ -8,10 +8,11 @@
 [![MkDocs](https://img.shields.io/badge/MkDocs-Documentation-326CE5?logo=mkdocs&logoColor=white)](https://www.mkdocs.org/)
 <!-- code-quality -->
 [![ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)](https://github.com/astral-sh/ty)[![mypy](https://img.shields.io/badge/type%20checked-mypy-039dfc.svg)](https://mypy-lang.org/)
+[![ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)](https://github.com/astral-sh/ty)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![pytest](https://img.shields.io/badge/tested%20with-pytest-46a2f1.svg?logo=pytest)](https://pytest.org/)
 [![codecov](https://codecov.io/gh/Winipedia/video-vault/branch/main/graph/badge.svg)](https://codecov.io/gh/Winipedia/video-vault)
+[![rumdl](https://img.shields.io/badge/markdown-rumdl-darkgreen)](https://github.com/rvben/rumdl)
 <!-- package-info -->
 [![PyPI](https://img.shields.io/pypi/v/video-vault?logo=pypi&logoColor=white)](https://pypi.org/project/video-vault)
 [![Python](https://img.shields.io/badge/python-3.12|3.13-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
@@ -28,13 +29,14 @@
 
 ---
 
-# video-vault Documentation
-
-Welcome to the Video Vault documentation. This guide will help you understand and use the application.
+Welcome to the Video Vault documentation.
+This guide will help you understand and use the application.
 
 ## Overview
 
-Video Vault is a secure desktop application for downloading and managing videos from any platform. All downloaded videos are encrypted and stored locally on your computer.
+Video Vault is a secure desktop application for downloading
+and managing videos from any platform.
+All downloaded videos are encrypted and stored locally on your computer.
 
 ## Table of Contents
 
@@ -43,7 +45,8 @@ Video Vault is a secure desktop application for downloading and managing videos 
 
 ## Key Features
 
-- **Universal Video Downloads**: Download videos from YouTube, Vimeo, and other platforms
+- **Universal Video Downloads**:
+    Download videos from YouTube, Vimeo, and other platforms
 - **Encrypted Storage**: All videos are encrypted with AES-GCM encryption
 - **Resume Playback**: Videos automatically resume from where you left off
 - **Cross-Platform**: Works on Windows, macOS, and Linux
@@ -54,7 +57,6 @@ Video Vault is a secure desktop application for downloading and managing videos 
 - [Installation](user-guide.md#installation)
 - [Downloading Videos](user-guide.md#downloading-videos)
 - [Playing Videos](user-guide.md#playing-videos)
-- [Development Setup](development.md#setup)
 
 ## Getting Help
 

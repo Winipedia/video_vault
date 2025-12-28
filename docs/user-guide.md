@@ -105,7 +105,8 @@ When you return to a video, it will resume exactly where you left off.
 1. Click the **garbage can** button at the top-center of the Downloads page
 2. All videos will be removed from your library
 
-**Note**: Deleted videos cannot be recovered. The encrypted files are permanently removed.
+**Note**: Deleted videos cannot be recovered.
+The encrypted files are permanently removed.
 
 ## Data Storage
 
@@ -114,22 +115,26 @@ When you return to a video, it will resume exactly where you left off.
 Video Vault stores data in platform-specific locations:
 
 **Linux/macOS**:
+
 - Database: `~/.local/share/VideoVault/db/db.sqlite3`
 - Videos: `~/.local/share/VideoVault/media/downloads/`
 
 **Windows**:
+
 - Database: `%LOCALAPPDATA%\VideoVault\db\db.sqlite3`
 - Videos: `%LOCALAPPDATA%\VideoVault\media\downloads\`
 
 ### Encryption
 
-All downloaded videos are encrypted using AES-GCM encryption. The encryption key is stored securely in your system's keyring:
+All downloaded videos are encrypted using AES-GCM encryption.
+The encryption key is stored securely in your system's keyring:
 
 - **macOS**: Keychain
 - **Windows**: Credential Manager
 - **Linux**: Secret Service (via keyring library)
 
-Videos are encrypted before being saved to disk and decrypted on-the-fly during playback.
+Videos are encrypted before being saved
+to disk and decrypted on-the-fly during playback.
 
 ## Troubleshooting
 
@@ -161,7 +166,10 @@ If the application won't launch:
 ## Tips and Best Practices
 
 - **Video Quality**: Videos are downloaded in the best available MP4 format
-- **Storage Space**: Monitor your disk space - encrypted videos take the same space as unencrypted ones
-- **Backup**: The database and media files can be backed up from the data storage locations
-- **Privacy**: All videos are stored locally and encrypted - nothing is uploaded to external servers
-
+- **Storage Space**:
+    Monitor your disk space - encrypted videos take the
+        same space as unencrypted ones
+- **Backup**: The database and media files
+    can be backed up from the data storage locations
+- **Privacy**: All videos are stored locally and encrypted,
+    nothing is uploaded to external servers
