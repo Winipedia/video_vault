@@ -3,7 +3,6 @@
 from pathlib import Path
 
 import pytest
-from pyrig.src.testing.assertions import assert_with_msg
 
 from video_vault.src.db.models import File
 
@@ -25,23 +24,18 @@ class TestFile:
         file_id = file_instance.pk
 
         # Verify file exists in filesystem and database
-        assert_with_msg(Path(file_path).exists(), "File should exist in filesystem")
-        assert_with_msg(
-            File.objects.filter(pk=file_id).exists(), "File should exist in database"
-        )
+        assert Path(file_path).exists(), "File should exist in filesystem"
+        assert File.objects.filter(pk=file_id).exists(), "File should exist in database"
 
         # Delete the file
         result = file_instance.delete_file()
 
         # Verify file is deleted from both filesystem and database
-        assert_with_msg(
-            not Path(file_path).exists(), "File should be deleted from filesystem"
+        assert not Path(file_path).exists(), "File should be deleted from filesystem"
+        assert not File.objects.filter(pk=file_id).exists(), (
+            "File should be deleted from database"
         )
-        assert_with_msg(
-            not File.objects.filter(pk=file_id).exists(),
-            "File should be deleted from database",
-        )
-        assert_with_msg(result[0] == 1, "Should delete exactly one record")
+        assert result[0] == 1, "Should delete exactly one record"
 
     @pytest.mark.django_db
     def test_create_encrypted(self, tmp_path: Path) -> None:
@@ -55,20 +49,18 @@ class TestFile:
         result = File.create_encrypted(test_file)
 
         # Verify the file was created
-        assert_with_msg(result.file.name != "", "File should have a name")
-        assert_with_msg(result.file.size > 0, "File should have content")
-        assert_with_msg(result.last_position == 0, "Default last_position should be 0")
+        assert result.file.name != "", "File should have a name"
+        assert result.file.size > 0, "File should have content"
+        assert result.last_position == 0, "Default last_position should be 0"
 
         # Verify file exists in database
-        assert_with_msg(
-            File.objects.filter(pk=result.pk).exists(), "File should exist in database"
+        assert File.objects.filter(pk=result.pk).exists(), (
+            "File should exist in database"
         )
 
         # Verify the file is encrypted (content should be different from original)
         encrypted_content = result.file.read()
-        assert_with_msg(
-            encrypted_content != test_content, "File content should be encrypted"
-        )
+        assert encrypted_content != test_content, "File content should be encrypted"
 
     @pytest.mark.django_db
     def test_display_name(self, tmp_path: Path) -> None:
@@ -83,12 +75,11 @@ class TestFile:
 
         # Test display_name property
         display_name = file_instance.display_name
-        assert_with_msg(display_name != "", "Display name should not be empty")
-        assert_with_msg(
-            ".mp4" not in display_name, "Display name should not contain file extension"
+        assert display_name != "", "Display name should not be empty"
+        assert ".mp4" not in display_name, (
+            "Display name should not contain file extension"
         )
         # The display name should be based on the filename without extension
-        assert_with_msg(
-            "my_test_video" in display_name,
-            "Display name should contain the base filename",
+        assert "my_test_video" in display_name, (
+            "Display name should contain the base filename"
         )

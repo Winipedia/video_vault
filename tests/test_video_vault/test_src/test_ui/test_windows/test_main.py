@@ -1,7 +1,6 @@
 """module."""
 
 from pyrig.src.modules.module import make_obj_importpath
-from pyrig.src.testing.assertions import assert_with_msg
 from pytest_mock import MockerFixture
 
 from video_vault.src.ui.pages.downloads import Downloads as DownloadsPage
@@ -31,12 +30,11 @@ class TestVideoVault:
         # Verify BasePage.get_subclasses was called with pages package
         mock_get_subclasses.assert_called_once()
         call_args = mock_get_subclasses.call_args[1]  # Get keyword arguments
-        assert_with_msg("package" in call_args, "Should pass package parameter")
+        assert "package" in call_args, "Should pass package parameter"
 
         # Verify the result
-        assert_with_msg(
-            result == expected_pages,
-            "Should return the page classes from BasePage.get_subclasses",
+        assert result == expected_pages, (
+            "Should return the page classes from BasePage.get_subclasses"
         )
 
     def test_get_start_page_cls(self) -> None:
@@ -45,8 +43,8 @@ class TestVideoVault:
         result = VideoVault.get_start_page_cls()
 
         # Verify it returns the DownloadsPage class
-        assert_with_msg(
-            result == DownloadsPage, "Should return DownloadsPage as start page class"
+        assert result == DownloadsPage, (
+            "Should return DownloadsPage as start page class"
         )
 
     def test_pre_setup(self, mocker: MockerFixture) -> None:

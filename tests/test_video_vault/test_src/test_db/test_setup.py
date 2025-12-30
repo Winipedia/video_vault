@@ -4,7 +4,6 @@ import tempfile
 from pathlib import Path
 
 from pyrig.src.modules.module import make_obj_importpath
-from pyrig.src.testing.assertions import assert_with_msg
 from pytest_mock import MockerFixture
 
 from video_vault.src import db
@@ -49,50 +48,41 @@ def test_setup_django(mocker: MockerFixture) -> None:
         # Verify directories were created
         media_root = temp_path / "media"
         db_dir = temp_path / "db"
-        assert_with_msg(media_root.exists(), "Media root directory should be created")
-        assert_with_msg(db_dir.exists(), "Database directory should be created")
+        assert media_root.exists(), "Media root directory should be created"
+        assert db_dir.exists(), "Database directory should be created"
 
         # Verify Django settings were configured
         mock_settings.configure.assert_called_once()
         call_args = mock_settings.configure.call_args[1]
 
         # Check database configuration
-        assert_with_msg("DATABASES" in call_args, "DATABASES should be configured")
+        assert "DATABASES" in call_args, "DATABASES should be configured"
         db_config = call_args["DATABASES"]["default"]
-        assert_with_msg(
-            db_config["ENGINE"] == "django.db.backends.sqlite3",
-            "Should use SQLite engine",
+        assert db_config["ENGINE"] == "django.db.backends.sqlite3", (
+            "Should use SQLite engine"
         )
-        assert_with_msg(
-            str(temp_path / "db" / "db.sqlite3") in db_config["NAME"],
-            "Database path should be correct",
+        assert str(temp_path / "db" / "db.sqlite3") in db_config["NAME"], (
+            "Database path should be correct"
         )
 
         # Check installed apps
-        assert_with_msg(
-            "INSTALLED_APPS" in call_args, "INSTALLED_APPS should be configured"
-        )
+        assert "INSTALLED_APPS" in call_args, "INSTALLED_APPS should be configured"
         installed_apps = call_args["INSTALLED_APPS"]
         expected_apps = [
             make_obj_importpath(db),
         ]
         for app in expected_apps:
-            assert_with_msg(
-                app in installed_apps, f"App {app} should be in INSTALLED_APPS"
-            )
+            assert app in installed_apps, f"App {app} should be in INSTALLED_APPS"
 
         # Check media configuration
-        assert_with_msg(
-            call_args["MEDIA_ROOT"] == media_root, "MEDIA_ROOT should be set correctly"
+        assert call_args["MEDIA_ROOT"] == media_root, (
+            "MEDIA_ROOT should be set correctly"
         )
-        assert_with_msg(
-            call_args["MEDIA_URL"] == "/media/", "MEDIA_URL should be set correctly"
-        )
+        assert call_args["MEDIA_URL"] == "/media/", "MEDIA_URL should be set correctly"
 
         # Check secret key
-        assert_with_msg(
-            call_args["SECRET_KEY"] == "test_secret_key",  # noqa: S105
-            "SECRET_KEY should be set correctly",
+        assert call_args["SECRET_KEY"] == "test_secret_key", (  # noqa: S105
+            "SECRET_KEY should be set correctly"
         )
 
         # Verify Django setup was called

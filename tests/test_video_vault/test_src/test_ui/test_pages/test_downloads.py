@@ -3,7 +3,6 @@
 from pathlib import Path
 
 from pyrig.src.modules.module import make_obj_importpath
-from pyrig.src.testing.assertions import assert_with_msg
 from pytest_mock import MockerFixture
 
 from video_vault.src.ui.pages import downloads as downloads_module
@@ -103,9 +102,8 @@ class TestDownloads:
 
         # Verify remove_download_and_button was called for each download
         expected_call_count = 2
-        assert_with_msg(
-            mock_remove.call_count == expected_call_count,
-            "Should call remove_download_and_button for each download",
+        assert mock_remove.call_count == expected_call_count, (
+            "Should call remove_download_and_button for each download"
         )
         mock_remove.assert_any_call(mock_button1)
         mock_remove.assert_any_call(mock_button2)
@@ -182,9 +180,8 @@ class TestDownloads:
 
         # Verify add_download_button was called for each file
         expected_call_count = 2
-        assert_with_msg(
-            mock_add_download_button.call_count == expected_call_count,
-            "Should call add_download_button for each file",
+        assert mock_add_download_button.call_count == expected_call_count, (
+            "Should call add_download_button for each file"
         )
         mock_add_download_button.assert_any_call(mock_file1)
         mock_add_download_button.assert_any_call(mock_file2)
@@ -217,9 +214,8 @@ class TestDownloads:
 
         # Verify player page was retrieved and configured
         mock_get_page.assert_called_once()
-        assert_with_msg(
-            mock_player_page.current_file == mock_download,
-            "Player page should have current file set",
+        assert mock_player_page.current_file == mock_download, (
+            "Player page should have current file set"
         )
 
         # Verify playback was started with correct parameters
@@ -263,9 +259,8 @@ class TestDownloads:
 
         # Verify button was added to layout and mapping
         mock_downloads_layout.addWidget.assert_called_once_with(mock_button)
-        assert_with_msg(
-            page.button_to_download[mock_button] == mock_download,
-            "Button should be mapped to download",
+        assert page.button_to_download[mock_button] == mock_download, (
+            "Button should be mapped to download"
         )
 
         # Verify menu was created and configured
@@ -305,7 +300,6 @@ class TestDownloads:
         # Verify button was removed from layout and mapping
         mock_downloads_layout.removeWidget.assert_called_once_with(mock_button)
         mock_button.deleteLater.assert_called_once()
-        assert_with_msg(
-            mock_button not in page.button_to_download,
-            "Button should be removed from mapping",
+        assert mock_button not in page.button_to_download, (
+            "Button should be removed from mapping"
         )

@@ -3,7 +3,6 @@
 from pathlib import Path
 
 from pyrig.src.modules.module import make_obj_importpath
-from pyrig.src.testing.assertions import assert_with_msg
 from pytest_mock import MockerFixture
 
 from video_vault.src.ui.pages import player as player_module
@@ -28,9 +27,7 @@ class TestPlayer:
         player.post_setup()
 
         # Verify current_file was set to None
-        assert_with_msg(
-            player.current_file is None, "current_file should be set to None"
-        )
+        assert player.current_file is None, "current_file should be set to None"
 
     def test_play_download(self, mocker: MockerFixture) -> None:
         """Test method for play_download."""
@@ -56,9 +53,8 @@ class TestPlayer:
         mock_download.refresh_from_db.assert_called_once()
 
         # Verify current_file was set
-        assert_with_msg(
-            player.current_file == mock_download,
-            "current_file should be set to download",
+        assert player.current_file == mock_download, (
+            "current_file should be set to download"
         )
 
         # Verify start_playback was called with correct parameters
@@ -90,16 +86,14 @@ class TestPlayer:
 
         # Verify existing file position was saved
         expected_position = 2500
-        assert_with_msg(
-            mock_existing_file.last_position == expected_position,
-            "Existing file position should be saved",
+        assert mock_existing_file.last_position == expected_position, (
+            "Existing file position should be saved"
         )
         mock_existing_file.save.assert_called_once()
 
         # Verify new file was set as current
-        assert_with_msg(
-            player.current_file == mock_download,
-            "current_file should be set to new download",
+        assert player.current_file == mock_download, (
+            "current_file should be set to new download"
         )
 
         # Verify start_playback was called with new file parameters
@@ -177,16 +171,13 @@ class TestPlayer:
         player.stop_playback()
 
         # Verify position was saved
-        assert_with_msg(
-            mock_current_file.last_position == expected_position,
-            "Current file position should be saved",
+        assert mock_current_file.last_position == expected_position, (
+            "Current file position should be saved"
         )
         mock_current_file.save.assert_called_once()
 
         # Verify current_file was set to None
-        assert_with_msg(
-            player.current_file is None, "current_file should be set to None"
-        )
+        assert player.current_file is None, "current_file should be set to None"
 
         # Verify media player was stopped
         mock_media_player.stop_and_close_io_device.assert_called_once()

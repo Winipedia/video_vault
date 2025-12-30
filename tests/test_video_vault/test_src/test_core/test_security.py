@@ -3,7 +3,6 @@
 import pytest
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from pyrig.src.modules.module import make_obj_importpath
-from pyrig.src.testing.assertions import assert_with_msg
 from pytest_mock import MockerFixture
 
 from video_vault.src.core import security as security_module
@@ -28,7 +27,7 @@ def test_get_or_create_app_aes_gcm(mocker: MockerFixture) -> None:
     mock_get_or_create_aes_gcm.assert_called_once_with(APP_NAME, AUTHOR)
 
     # Verify it returns the AESGCM instance
-    assert_with_msg(result is mock_aes_gcm, "Should return the AESGCM instance")
+    assert result is mock_aes_gcm, "Should return the AESGCM instance"
 
 
 def test_get_app_key_as_str(mocker: MockerFixture) -> None:
@@ -54,7 +53,7 @@ def test_get_app_key_as_str(mocker: MockerFixture) -> None:
     mock_get_key_as_str.assert_called_once_with(APP_NAME, AUTHOR, key_class=AESGCM)
 
     # Verify it returns the key
-    assert_with_msg(result == expected_key, f"Should return key={expected_key}")
+    assert result == expected_key, f"Should return key={expected_key}"
 
     # Test error case when key is None
     mock_get_key_as_str.return_value = None
@@ -66,7 +65,6 @@ def test_get_app_key_as_str(mocker: MockerFixture) -> None:
     # Verify it still called the functions
     mock_get_or_create_aes_gcm.assert_called_once()
     expected_call_count = 2
-    assert_with_msg(
-        mock_get_key_as_str.call_count == expected_call_count,
-        f"Should call get_key_as_str {expected_call_count} times",
+    assert mock_get_key_as_str.call_count == expected_call_count, (
+        f"Should call get_key_as_str {expected_call_count} times"
     )

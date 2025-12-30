@@ -6,7 +6,6 @@ from typing import TYPE_CHECKING
 
 import pytest
 from pyrig.src.modules.module import make_obj_importpath
-from pyrig.src.testing.assertions import assert_with_msg
 from pytest_mock import MockerFixture
 
 from video_vault.src.core import downloads as downloads_module
@@ -45,8 +44,8 @@ def test_add_download(mocker: MockerFixture, tmp_path: Path) -> None:
 
     result = add_download(test_url, cookies)
 
-    assert_with_msg(result.file.name != "", "File should have a name")
-    assert_with_msg(result.display_name != "", "File should have a display name")
+    assert result.file.name != "", "File should have a name"
+    assert result.display_name != "", "File should have a display name"
     mock_ydl_instance.extract_info.assert_called_once_with(test_url, download=True)
 
 
@@ -73,10 +72,8 @@ def test_do_download(mocker: MockerFixture, tmp_path: Path) -> None:
     with tempfile.TemporaryDirectory() as tempdir:
         result = do_download(tempdir, test_url, cookies)
 
-        assert_with_msg(result.exists(), "Downloaded file should exist")
-        assert_with_msg(
-            result.stat().st_size > 0, "Downloaded file should not be empty"
-        )
+        assert result.exists(), "Downloaded file should exist"
+        assert result.stat().st_size > 0, "Downloaded file should not be empty"
         mock_ydl_instance.extract_info.assert_called_once_with(test_url, download=True)
         mock_ydl_instance.prepare_filename.assert_called_once()
 
@@ -91,8 +88,8 @@ def test_save_download(tmp_path: Path) -> None:
 
     result = save_download(test_file)
 
-    assert_with_msg(result.file.name != "", "File should have a name")
-    assert_with_msg(result.display_name != "", "File should have a display name")
+    assert result.file.name != "", "File should have a name"
+    assert result.display_name != "", "File should have a display name"
 
 
 class TestDownloadWorker:
@@ -105,11 +102,10 @@ class TestDownloadWorker:
 
         worker = DownloadWorker(test_url, cookies)
 
-        assert_with_msg(worker.url == test_url, "URL should be set correctly")
-        assert_with_msg(worker.cookies == cookies, "Cookies should be set correctly")
-        assert_with_msg(
-            worker in DownloadWorker.ALL_WORKERS,
-            "Worker should be added to ALL_WORKERS",
+        assert worker.url == test_url, "URL should be set correctly"
+        assert worker.cookies == cookies, "Cookies should be set correctly"
+        assert worker in DownloadWorker.ALL_WORKERS, (
+            "Worker should be added to ALL_WORKERS"
         )
 
     def test_run(self, mocker: MockerFixture) -> None:
@@ -128,12 +124,10 @@ class TestDownloadWorker:
         worker = DownloadWorker(test_url, cookies)
         worker.run()
 
-        assert_with_msg(worker.file == mock_file, "File should be set")
-        assert_with_msg(
-            worker.name == "Test Video", "Name should be set from file display_name"
-        )
-        assert_with_msg(worker.successful is True, "Should be marked as successful")
-        assert_with_msg(worker.error is None, "Error should be None on success")
+        assert worker.file == mock_file, "File should be set"
+        assert worker.name == "Test Video", "Name should be set from file display_name"
+        assert worker.successful is True, "Should be marked as successful"
+        assert worker.error is None, "Error should be None on success"
 
     def test_on_finished(self, mocker: MockerFixture) -> None:
         """Test method for on_finished."""
@@ -153,9 +147,8 @@ class TestDownloadWorker:
 
         mock_show_notification.assert_called_once()
         mock_update_downloads_page.assert_called_once()
-        assert_with_msg(
-            len(DownloadWorker.ALL_WORKERS) == initial_worker_count - 1,
-            "Worker should be removed from ALL_WORKERS",
+        assert len(DownloadWorker.ALL_WORKERS) == initial_worker_count - 1, (
+            "Worker should be removed from ALL_WORKERS"
         )
 
     def test_show_notification(self, mocker: MockerFixture) -> None:
