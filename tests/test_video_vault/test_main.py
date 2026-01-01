@@ -7,7 +7,7 @@ from contextlib import chdir
 from pathlib import Path
 
 import pytest
-from pyrig.src.os.os import run_subprocess
+from pyrig.src.processes import run_subprocess
 
 import video_vault
 
